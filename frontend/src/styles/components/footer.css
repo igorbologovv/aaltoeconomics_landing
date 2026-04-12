@@ -1,0 +1,211 @@
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+  background: #000;
+  color: #fff;
+  padding: 64px 0 60px;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  justify-content: center;
+  align-items: start;
+  column-gap: 110px;
+}
+
+.footer__title {
+  margin: 0 0 30px;
+  font-family: "The Seasons", Georgia, "Times New Roman", serif;
+  font-size: 1.82rem;
+  font-weight: 400;
+  line-height: 1.08;
+  color: #fff;
+}
+
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer__contact-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 18px;
+}
+
+.footer__contact-text p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.34;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.footer__contact-text a {
+  color: rgba(255, 255, 255, 0.96);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer__brand-logo {
+  display: block;
+  width: 76px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.footer__partners {
+  text-align: center;
+}
+
+.footer__partners .footer__title {
+  margin-bottom: 32px;
+}
+
+.footer__logos {
+  display: grid;
+  grid-template-columns: repeat(3, 170px);
+  grid-auto-rows: 74px;
+  justify-content: center;
+  align-items: center;
+  column-gap: 38px;
+  row-gap: 18px;
+}
+
+.footer__logo-slot {
+  width: 170px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__logo-image {
+  display: block;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  max-width: 128px;
+  max-height: 40px;
+}
+
+.footer__logo-image--bcg {
+  max-width: 108px;
+  max-height: 35px;
+}
+
+.footer__logo-image--evli {
+  max-width: 124px;
+  max-height: 40px;
+}
+
+.footer__logo-image--bain {
+  max-width: 122px;
+  max-height: 38px;
+}
+
+.footer__logo-image--august {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.footer__logo-image--bearingpoint {
+  max-width: 150px;
+  max-height: 34px;
+}
+
+.footer__logo-image--ey {
+  max-width: 74px;
+  max-height: 42px;
+}
+
+@media (max-width: 980px) {
+  .footer {
+    grid-template-columns: 1fr;
+    row-gap: 46px;
+  }
+
+  .footer__logos {
+    grid-template-columns: repeat(3, 150px);
+    column-gap: 22px;
+    row-gap: 16px;
+  }
+
+  .footer__logo-slot {
+    width: 150px;
+    height: 68px;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-footer {
+    padding: 52px 0 48px;
+  }
+
+  .footer__title {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
+
+  .footer__contact-text p {
+    font-size: 0.94rem;
+  }
+
+  .footer__logos {
+    grid-template-columns: repeat(2, 140px);
+    grid-auto-rows: 62px;
+    column-gap: 18px;
+    row-gap: 14px;
+  }
+
+  .footer__logo-slot {
+    width: 140px;
+    height: 62px;
+  }
+
+  .footer__logo-image--bcg {
+    max-width: 96px;
+    max-height: 31px;
+  }
+
+  .footer__logo-image--evli {
+    max-width: 108px;
+    max-height: 35px;
+  }
+
+  .footer__logo-image--bain {
+    max-width: 112px;
+    max-height: 35px;
+  }
+
+  .footer__logo-image--august {
+    max-width: 44px;
+    max-height: 44px;
+  }
+
+  .footer__logo-image--bearingpoint {
+    max-width: 128px;
+    max-height: 30px;
+  }
+
+  .footer__logo-image--ey {
+    max-width: 64px;
+    max-height: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__logos {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__logo-slot {
+    width: 100%;
+  }
+}

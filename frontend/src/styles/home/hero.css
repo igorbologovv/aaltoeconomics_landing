@@ -1,0 +1,135 @@
+.home-hero {
+  position: relative;
+  min-height: calc(100vh - 84px);
+  overflow: hidden;
+  background: #0f2344;
+  z-index: 1;
+}
+
+.home-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: url("/images/home/hero-new.jpg") center center / cover no-repeat;
+  transform: scale(1.03);
+  animation: heroDrift 18s ease-in-out infinite alternate;
+  will-change: transform;
+  z-index: 0;
+}
+
+.home-hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 16, 34, 0.12) 0%,
+    rgba(5, 16, 34, 0.20) 24%,
+    rgba(5, 16, 34, 0.32) 48%,
+    rgba(5, 16, 34, 0.50) 72%,
+    rgba(5, 16, 34, 0.72) 100%
+  );
+}
+
+.home-hero::after {
+  display: none;
+}
+
+.home-hero__inner {
+  position: relative;
+  z-index: 3;
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+  min-height: calc(100vh - 84px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 96px 0 140px;
+}
+
+.home-hero__kicker {
+  margin: 0 0 18px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.home-hero__title {
+  margin: 0 0 20px;
+  font-size: clamp(4rem, 8vw, 6.2rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  color: #fff;
+}
+
+.home-hero__text {
+  margin: 0 auto;
+  max-width: 760px;
+  font-size: 1.2rem;
+  line-height: 1.58;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.home-hero__actions {
+  margin-top: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@keyframes heroDrift {
+  0% {
+    transform: scale(1.03) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: scale(1.07) translate3d(0, -10px, 0);
+  }
+}
+
+@media (max-width: 980px) {
+  .home-hero {
+    min-height: calc(88vh - 84px);
+  }
+
+  .home-hero__inner {
+    min-height: calc(88vh - 84px);
+    padding: 72px 0 112px;
+  }
+
+  .home-hero__title {
+    font-size: clamp(3rem, 12vw, 5rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .home-hero {
+    min-height: calc(78vh - 84px);
+  }
+
+  .home-hero__inner {
+    min-height: calc(78vh - 84px);
+    padding: 56px 0 92px;
+  }
+
+  .home-hero__title {
+    font-size: clamp(2.7rem, 13vw, 3.8rem);
+    margin-bottom: 16px;
+  }
+
+  .home-hero__text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .home-hero__actions {
+    gap: 12px;
+    margin-top: 26px;
+  }
+}

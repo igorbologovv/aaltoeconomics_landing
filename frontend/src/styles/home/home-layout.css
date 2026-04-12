@@ -1,0 +1,230 @@
+@font-face {
+  font-family: "The Seasons";
+  src: url("/fonts/TheSeasons-Regular.woff2") format("woff2"),
+       url("/fonts/TheSeasons-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Seasons";
+  src: url("/fonts/TheSeasons-SemiBold.woff2") format("woff2"),
+       url("/fonts/TheSeasons-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-primary: #032455;
+  --color-primary-hover: #0b2f66;
+
+  --color-bg: #f1f3f6;
+  --color-bg-soft: #eceff4;
+  --color-bg-warm: #f5f6f8;
+
+  --color-text: #1c2433;
+  --color-text-soft: #5c6778;
+
+  --color-white: #ffffff;
+
+  --radius-pill: 999px;
+  --radius-xl: 36px;
+
+  --btn-height: 54px;
+  --btn-padding-x: 28px;
+  --btn-font-size: 1rem;
+  --btn-font-weight: 600;
+
+  --btn-shadow-primary: 0 14px 28px rgba(3, 36, 85, 0.14);
+  --btn-shadow-primary-hover: 0 18px 34px rgba(3, 36, 85, 0.2);
+
+  --btn-shadow-light: 0 14px 28px rgba(0, 0, 0, 0.14);
+  --btn-shadow-light-hover: 0 18px 34px rgba(0, 0, 0, 0.18);
+
+  --transition-fast: 0.22s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--color-bg);
+}
+
+body {
+  font-family: "The Seasons", Georgia, "Times New Roman", serif;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+section {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.section-label {
+  margin: 0 0 18px;
+  color: rgba(3, 36, 85, 0.72);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.section-label.light {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* =========================================================
+   BUTTON SYSTEM
+   ========================================================= */
+
+/* База для новых и старых кнопок */
+.btn,
+.primary-btn,
+.secondary-btn,
+.light-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--btn-height);
+  padding: 0 var(--btn-padding-x);
+  border-radius: var(--radius-pill);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+/* hover / focus общие */
+.btn:hover,
+.primary-btn:hover,
+.secondary-btn:hover,
+.light-btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:focus-visible,
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible,
+.light-btn:focus-visible {
+  outline: 2px solid rgba(3, 36, 85, 0.28);
+  outline-offset: 3px;
+}
+
+/* disabled на будущее */
+.btn[aria-disabled="true"],
+.btn:disabled,
+.primary-btn[aria-disabled="true"],
+.primary-btn:disabled,
+.secondary-btn[aria-disabled="true"],
+.secondary-btn:disabled,
+.light-btn[aria-disabled="true"],
+.light-btn:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  transform: none;
+}
+
+/* =========================================================
+   PRIMARY
+   ========================================================= */
+
+.btn--primary,
+.primary-btn {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: var(--btn-shadow-primary);
+}
+
+.btn--primary:hover,
+.primary-btn:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  box-shadow: var(--btn-shadow-primary-hover);
+}
+
+/* =========================================================
+   SECONDARY
+   ========================================================= */
+
+.btn--secondary,
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn--secondary:hover,
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+/* =========================================================
+   LIGHT
+   ========================================================= */
+
+.btn--light,
+.light-btn {
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-white);
+  box-shadow: var(--btn-shadow-light);
+}
+
+.btn--light:hover,
+.light-btn:hover {
+  box-shadow: var(--btn-shadow-light-hover);
+}
+
+/* =========================================================
+   SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .btn,
+  .primary-btn,
+  .secondary-btn,
+  .light-btn {
+    min-height: 52px;
+    padding: 0 24px;
+    font-size: 0.96rem;
+  }
+}
