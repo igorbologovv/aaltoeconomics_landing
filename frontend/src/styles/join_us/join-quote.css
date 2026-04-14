@@ -1,0 +1,136 @@
+.join-quote {
+  padding: 104px 0 116px;
+  background: linear-gradient(
+    180deg,
+    #8f9eb6 0%,
+    #7f90ab 48%,
+    #6f829f 100%
+  );
+}
+
+.join-quote__grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 560px) minmax(320px, 420px);
+  justify-content: space-between;
+  align-items: center;
+  gap: 72px;
+}
+
+.join-quote__text-wrap {
+  max-width: 560px;
+  color: #fff;
+}
+
+.join-quote__icon {
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "The Seasons", Georgia, "Times New Roman", serif;
+  font-size: 7rem;
+  line-height: 0.7;
+}
+
+.join-quote__text {
+  margin: 0;
+  color: #fff;
+  font-family: "The Seasons", Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.46;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  border: 0;
+}
+
+.join-quote__author {
+  margin: 28px 0 0;
+  color: #fff;
+  font-size: 1.16rem;
+  line-height: 1.4;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.join-quote__image-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 420px;
+  justify-self: end;
+  border-radius: 28px;
+  box-shadow:
+    0 20px 44px rgba(3, 36, 85, 0.18),
+    0 30px 70px rgba(8, 22, 48, 0.2);
+}
+
+.join-quote__image {
+  display: block;
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 28px;
+  transition: transform 0.45s ease;
+  transform: scale(1);
+}
+
+.join-quote__image-wrap:hover .join-quote__image {
+  transform: scale(1.045);
+}
+
+@media (max-width: 980px) {
+  .join-quote {
+    padding: 88px 0 96px;
+  }
+
+  .join-quote__grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .join-quote__text-wrap {
+    max-width: 100%;
+  }
+
+  .join-quote__image-wrap {
+    justify-self: start;
+    max-width: 460px;
+  }
+
+  .join-quote__image {
+    height: 560px;
+  }
+}
+
+@media (max-width: 640px) {
+  .join-quote {
+    padding: 72px 0 88px;
+  }
+
+  .join-quote__icon {
+    font-size: 5.8rem;
+    margin-bottom: 10px;
+  }
+
+  .join-quote__text {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    line-height: 1.42;
+  }
+
+  .join-quote__author {
+    margin-top: 22px;
+    font-size: 1.05rem;
+  }
+
+  .join-quote__image-wrap {
+    border-radius: 22px;
+  }
+
+  .join-quote__image {
+    height: 420px;
+    border-radius: 22px;
+  }
+
+  .join-quote__image-wrap:hover .join-quote__image {
+    transform: none;
+  }
+}

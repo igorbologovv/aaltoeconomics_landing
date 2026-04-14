@@ -25,9 +25,11 @@ function AboutSection() {
             to stay on top of the different career possibilities.
           </p>
 
-          <Link to="/for-alumni" className="primary-btn">
-            Meet the team
-          </Link>
+          <div className="about-section__button-row">
+            <Link to="/for-alumni" className="primary-btn">
+              Meet the team
+            </Link>
+          </div>
         </div>
 
         <div className="about-section__image-wrap">

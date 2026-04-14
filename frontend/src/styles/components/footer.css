@@ -111,13 +111,13 @@
 }
 
 .footer__logo-image--august {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 90px;
+  max-height: 90px;
 }
 
 .footer__logo-image--bearingpoint {
-  max-width: 150px;
-  max-height: 34px;
+  max-width: 132px;
+  max-height: 28px;
 }
 
 .footer__logo-image--ey {
@@ -185,8 +185,8 @@
   }
 
   .footer__logo-image--august {
-    max-width: 44px;
-    max-height: 44px;
+    max-width: 90px;
+    max-height: 90px;
   }
 
   .footer__logo-image--bearingpoint {

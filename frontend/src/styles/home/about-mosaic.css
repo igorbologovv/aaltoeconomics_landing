@@ -112,3 +112,13 @@
     font-size: 1rem;
   }
 }
+
+.about-mosaic__text {
+  max-width: 520px;
+}
+
+.about-mosaic__button-row {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 8px;
+}

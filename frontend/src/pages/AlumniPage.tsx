@@ -1,10 +1,18 @@
+import AlumniHeroSection from "../components/alumni/AlumniHeroSection";
+import AlumniSocialSection from "../components/alumni/AlumniSocialSection";
+import AlumniOpportunitiesSection from "../components/alumni/AlumniOpportunitiesSection";
+
+import "../styles/alumni/alumni-hero.css";
+import "../styles/alumni/alumni-social.css";
+import "../styles/alumni/alumni-opportunities.css";
+
 function AlumniPage() {
   return (
-    <section className="page-section">
-      <div className="container">
-        <h1>For Alumni</h1>
-      </div>
-    </section>
+    <>
+      <AlumniHeroSection />
+      <AlumniSocialSection />
+      <AlumniOpportunitiesSection />
+    </>
   );
 }
 

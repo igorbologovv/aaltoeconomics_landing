@@ -1,0 +1,153 @@
+.join-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-image: url("/images/join/join-hero.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.join-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 25, 56, 0.72) 0%,
+      rgba(8, 25, 56, 0.52) 34%,
+      rgba(8, 25, 56, 0.34) 62%,
+      rgba(8, 25, 56, 0.50) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(4, 16, 38, 0.18) 0%,
+      rgba(4, 16, 38, 0.34) 100%
+    );
+}
+
+.join-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(320px, 520px) minmax(320px, 640px);
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(40px, 6vw, 96px);
+  padding-top: clamp(120px, 14vh, 168px);
+  padding-bottom: clamp(84px, 10vh, 124px);
+}
+
+.join-hero__left {
+  color: #fff;
+}
+
+.join-hero__eyebrow {
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.join-hero__title {
+  margin: 0;
+  color: #fff;
+  font-family: "The Seasons", Georgia, "Times New Roman", serif;
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.join-hero__button-row {
+  margin-top: 36px;
+}
+
+.join-hero__right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.join-hero__description {
+  margin: 0;
+  max-width: 640px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  line-height: 1.7;
+  font-weight: 400;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.primary-btn--light {
+  background: #ffffff;
+  color: #032455;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 12px 30px rgba(3, 36, 85, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.primary-btn--light:hover {
+  background: #f6f7fb;
+  color: #032455;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1100px) {
+  .join-hero {
+    min-height: auto;
+  }
+
+  .join-hero__content {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 36px;
+    padding-top: 132px;
+    padding-bottom: 88px;
+  }
+
+  .join-hero__right {
+    justify-content: flex-start;
+  }
+
+  .join-hero__description {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 680px) {
+  .join-hero__content {
+    padding-top: 120px;
+    padding-bottom: 72px;
+    gap: 28px;
+  }
+
+  .join-hero__title {
+    font-size: clamp(2.8rem, 13vw, 4.5rem);
+    line-height: 1.02;
+  }
+
+  .join-hero__eyebrow {
+    margin-bottom: 16px;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+  }
+
+  .join-hero__button-row {
+    margin-top: 28px;
+  }
+
+  .join-hero__description {
+    max-width: 100%;
+    font-size: 1.05rem;
+    line-height: 1.72;
+  }
+}

@@ -32,9 +32,11 @@ function AboutMosaicSection() {
             <li>Engaging events for learning and networking.</li>
           </ul>
 
-          <Link to="/for-alumni" className="primary-btn">
-            Learn More
-          </Link>
+          <div className="about-mosaic__button-row">
+            <Link to="/for-alumni" className="primary-btn">
+              Learn More
+            </Link>
+          </div>
         </div>
       </div>
     </section>
