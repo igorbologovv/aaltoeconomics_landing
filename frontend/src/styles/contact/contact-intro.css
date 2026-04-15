@@ -1,0 +1,29 @@
+.contact-intro {
+  padding: 56px 0 24px;
+  background: #f1f3f6;
+}
+
+.contact-intro__content {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-intro__content p {
+  margin: 0;
+  max-width: 860px;
+  text-align: center;
+  color: #405572;
+  font-size: 1.22rem;
+  line-height: 1.72;
+}
+
+@media (max-width: 640px) {
+  .contact-intro {
+    padding: 40px 0 12px;
+  }
+
+  .contact-intro__content p {
+    font-size: 1rem;
+    line-height: 1.66;
+  }
+}

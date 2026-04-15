@@ -1,0 +1,24 @@
+.contact-page-header {
+  padding: 128px 0 40px;
+  background: #f1f3f6;
+}
+
+.contact-page-header h1 {
+  margin: 0;
+  color: #032455;
+  font-family: "The Seasons", Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 6vw, 5.4rem);
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .contact-page-header {
+    padding: 108px 0 28px;
+  }
+
+  .contact-page-header h1 {
+    font-size: clamp(2.3rem, 10vw, 3.7rem);
+  }
+}

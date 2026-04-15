@@ -1,0 +1,139 @@
+.companies-results {
+  padding: 104px 0 120px;
+  background: linear-gradient(180deg, #ece7dd 0%, #e3dccf 100%);
+}
+
+.companies-results__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 64px;
+}
+
+.companies-results__image-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 34px;
+  box-shadow:
+    0 18px 40px rgba(3, 36, 85, 0.08),
+    0 30px 70px rgba(8, 22, 48, 0.10);
+}
+
+.companies-results__image-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 34px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.03) 18%,
+    rgba(255, 255, 255, 0) 45%
+  );
+}
+
+.companies-results__image {
+  display: block;
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 0.45s ease;
+}
+
+.companies-results__image-wrap:hover .companies-results__image {
+  transform: scale(1.04);
+}
+
+.companies-results__text {
+  max-width: 520px;
+}
+
+.companies-results__text h2 {
+  margin: 0 0 20px;
+  color: #032455;
+  font-family: "The Seasons", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.8rem, 5vw, 4.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+}
+
+.companies-results__text p {
+  margin: 0 0 20px;
+  max-width: 500px;
+  color: #495d77;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.companies-results__contact {
+  margin-top: 6px;
+  color: #032455;
+  font-weight: 600;
+}
+
+.companies-results__contact a {
+  color: #032455;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.companies-results__actions {
+  margin-top: 28px;
+}
+
+@media (max-width: 980px) {
+  .companies-results {
+    padding: 88px 0 96px;
+  }
+
+  .companies-results__grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .companies-results__text {
+    max-width: 100%;
+  }
+
+  .companies-results__text p {
+    max-width: 100%;
+  }
+
+  .companies-results__image {
+    height: 520px;
+  }
+}
+
+@media (max-width: 640px) {
+  .companies-results {
+    padding: 72px 0 88px;
+  }
+
+  .companies-results__text h2 {
+    font-size: clamp(2.3rem, 10vw, 3.3rem);
+  }
+
+  .companies-results__image-wrap {
+    border-radius: 24px;
+  }
+
+  .companies-results__image-wrap::before {
+    border-radius: 24px;
+  }
+
+  .companies-results__image {
+    height: 360px;
+  }
+
+  .companies-results__text p {
+    font-size: 1rem;
+  }
+
+  .companies-results__image-wrap:hover .companies-results__image {
+    transform: none;
+  }
+}

@@ -1,0 +1,98 @@
+.contact-team-grid-section {
+  padding: 28px 0 112px;
+  background: #f1f3f6;
+}
+
+.contact-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 34px 26px;
+  align-items: start;
+}
+
+.contact-person-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-person-card__image-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow:
+    0 14px 32px rgba(3, 36, 85, 0.06),
+    0 22px 56px rgba(8, 22, 48, 0.08);
+}
+
+.contact-person-card__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.45s ease;
+}
+
+.contact-person-card:hover .contact-person-card__image {
+  transform: scale(1.03);
+}
+
+.contact-person-card__content {
+  padding: 18px 2px 0;
+}
+
+.contact-person-card__content h3 {
+  margin: 0 0 8px;
+  color: #032455;
+  font-family: "The Seasons", Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.contact-person-card__role {
+  margin: 0 0 10px;
+  color: #59708e;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.contact-person-card__email {
+  color: #032455;
+  text-decoration: none;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.contact-person-card__email:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 1100px) {
+  .contact-team-grid {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-team-grid-section {
+    padding: 20px 0 88px;
+  }
+
+  .contact-team-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .contact-person-card__image-wrap {
+    border-radius: 22px;
+  }
+
+  .contact-person-card__content h3 {
+    font-size: 1.7rem;
+  }
+}
