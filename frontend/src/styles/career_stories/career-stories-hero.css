@@ -1,0 +1,60 @@
+.career-hero {
+  background: #08234d;
+  padding: 136px 0 88px;
+  position: relative;
+}
+
+.career-hero__inner {
+  text-align: center;
+  color: #fff;
+}
+
+.career-hero__eyebrow {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.career-hero__title {
+  margin: 0;
+  color: #fff;
+  font-family: "The Seasons", Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 6vw, 5.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.career-hero__line {
+  width: 280px;
+  max-width: 42vw;
+  height: 3px;
+  margin: 26px auto 0;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+}
+
+@media (max-width: 980px) {
+  .career-hero {
+    padding: 120px 0 76px;
+  }
+}
+
+@media (max-width: 640px) {
+  .career-hero {
+    padding: 108px 0 68px;
+  }
+
+  .career-hero__title {
+    font-size: clamp(2.4rem, 10vw, 4rem);
+  }
+
+  .career-hero__line {
+    margin-top: 20px;
+    width: 180px;
+  }
+}

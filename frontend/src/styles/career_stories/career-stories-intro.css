@@ -1,0 +1,29 @@
+.career-intro {
+  padding: 42px 0 16px;
+  background: linear-gradient(180deg, #f3f5f8 0%, #eef2f6 100%);
+}
+
+.career-intro__inner {
+  display: flex;
+  justify-content: center;
+}
+
+.career-intro__text {
+  margin: 0;
+  max-width: 920px;
+  text-align: center;
+  color: #495d77;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 640px) {
+  .career-intro {
+    padding: 34px 0 8px;
+  }
+
+  .career-intro__text {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+}
