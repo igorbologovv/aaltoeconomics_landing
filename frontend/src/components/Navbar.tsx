@@ -22,6 +22,7 @@ function Navbar() {
           <NavLink to="/join-us">Join Us</NavLink>
           <NavLink to="/for-alumni">For Alumni</NavLink>
           <NavLink to="/career-stories">Career Stories</NavLink>
+          <NavLink to="/open-positions">Open Positions</NavLink>
           <NavLink to="/for-companies">For Companies</NavLink>
           <NavLink to="/contact">Contact</NavLink>
         </nav>

@@ -1,0 +1,44 @@
+.open-positions-hero {
+  padding: 116px 0 40px;
+  background: #08195d;
+}
+
+.open-positions-hero__media,
+.open-positions-hero__overlay {
+  display: none;
+}
+
+.open-positions-hero__content {
+  position: static;
+  display: block;
+  color: #fff;
+}
+
+.open-positions-hero__eyebrow {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.open-positions-hero__title {
+  margin: 0;
+  color: #fff;
+  font-family: "The Seasons", Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .open-positions-hero {
+    padding: 104px 0 28px;
+  }
+
+  .open-positions-hero__title {
+    font-size: clamp(2.2rem, 10vw, 3.6rem);
+  }
+}
