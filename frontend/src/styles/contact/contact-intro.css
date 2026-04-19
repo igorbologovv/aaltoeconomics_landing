@@ -1,5 +1,5 @@
 .contact-intro {
-  padding: 56px 0 24px;
+  padding: 44px 0 34px;
   background: #f1f3f6;
 }
 
@@ -10,16 +10,16 @@
 
 .contact-intro__content p {
   margin: 0;
-  max-width: 860px;
+  max-width: 760px;
   text-align: center;
-  color: #405572;
-  font-size: 1.22rem;
+  color: #4b617d;
+  font-size: 1.14rem;
   line-height: 1.72;
 }
 
 @media (max-width: 640px) {
   .contact-intro {
-    padding: 40px 0 12px;
+    padding: 30px 0 20px;
   }
 
   .contact-intro__content p {

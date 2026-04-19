@@ -1,0 +1,119 @@
+.admin-career-stories-editor {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 18px 40px rgba(10, 37, 64, 0.06);
+  display: grid;
+  gap: 20px;
+}
+
+.admin-career-stories-editor--empty {
+  min-height: 320px;
+  place-items: center;
+  text-align: center;
+}
+
+.admin-career-stories-editor--empty h2 {
+  margin: 0 0 10px;
+  color: #032455;
+}
+
+.admin-career-stories-editor--empty p {
+  margin: 0;
+  color: #5f6b7a;
+}
+
+.admin-career-stories-editor__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.admin-career-stories-editor__field {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-career-stories-editor__field span {
+  color: #032455;
+  font-weight: 600;
+}
+
+.admin-career-stories-editor__field input,
+.admin-career-stories-editor__field textarea,
+.admin-career-stories-editor__field select {
+  width: 100%;
+  border: 1px solid #d5dbe3;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font: inherit;
+  resize: vertical;
+  background: #ffffff;
+}
+
+.admin-career-stories-editor__field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.admin-career-stories-editor__paragraphs {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-career-stories-editor__paragraph-item {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #e1e6ee;
+  border-radius: 16px;
+  background: #fbfcfd;
+}
+
+.admin-career-stories-editor__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #032455;
+  font-weight: 600;
+}
+
+.admin-career-stories-editor__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.admin-career-stories-editor__primary-button,
+.admin-career-stories-editor__secondary-button,
+.admin-career-stories-editor__danger-button {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-career-stories-editor__primary-button {
+  background: #032455;
+  color: #ffffff;
+}
+
+.admin-career-stories-editor__secondary-button {
+  background: #e9eef5;
+  color: #032455;
+}
+
+.admin-career-stories-editor__danger-button {
+  background: #f8e3e3;
+  color: #8a1f1f;
+}
+
+@media (max-width: 1100px) {
+  .admin-career-stories-editor__grid {
+    grid-template-columns: 1fr;
+  }
+}

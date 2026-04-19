@@ -1,24 +1,92 @@
 .contact-page-header {
-  padding: 128px 0 40px;
-  background: #f1f3f6;
+  padding: 112px 0 58px;
+  background: #08285c;
+  color: #f5f7fb;
+}
+
+.contact-page-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-page-header__eyebrow {
+  margin: 0 0 16px;
+  color: rgba(245, 247, 251, 0.78);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .contact-page-header h1 {
   margin: 0;
-  color: #032455;
+  color: #f5f7fb;
   font-family: "The Seasons", Georgia, "Times New Roman", serif;
-  font-size: clamp(3rem, 6vw, 5.4rem);
-  line-height: 0.94;
-  letter-spacing: -0.05em;
+  font-size: clamp(3.2rem, 7vw, 5.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
   font-weight: 600;
+}
+
+.contact-page-header__divider {
+  width: min(240px, 34vw);
+  height: 3px;
+  margin: 18px 0 14px;
+  border-radius: 999px;
+  background: rgba(245, 247, 251, 0.9);
+}
+
+.contact-page-header__description {
+  margin: 0;
+  max-width: 760px;
+  color: rgba(245, 247, 251, 0.84);
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .contact-page-header {
+    padding: 104px 0 50px;
+  }
+
+  .contact-page-header__eyebrow {
+    margin-bottom: 14px;
+  }
+
+  .contact-page-header__divider {
+    margin: 20px 0;
+  }
+
+  .contact-page-header__description {
+    font-size: 1.04rem;
+  }
 }
 
 @media (max-width: 640px) {
   .contact-page-header {
-    padding: 108px 0 28px;
+    padding: 98px 0 42px;
+  }
+
+  .contact-page-header__eyebrow {
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 12px;
   }
 
   .contact-page-header h1 {
-    font-size: clamp(2.3rem, 10vw, 3.7rem);
+    font-size: clamp(2.6rem, 12vw, 4rem);
+  }
+
+  .contact-page-header__divider {
+    width: min(160px, 42vw);
+    height: 2px;
+    margin: 18px 0;
+  }
+
+  .contact-page-header__description {
+    font-size: 1rem;
+    line-height: 1.66;
   }
 }

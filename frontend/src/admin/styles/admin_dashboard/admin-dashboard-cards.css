@@ -1,0 +1,31 @@
+.admin-dashboard-cards {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.admin-dashboard-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 18px 40px rgba(10, 37, 64, 0.06);
+}
+
+.admin-dashboard-card h2 {
+  margin: 0 0 12px;
+  color: #032455;
+  font-size: 1.2rem;
+}
+
+.admin-dashboard-card p {
+  margin: 0;
+  color: #5f6b7a;
+  line-height: 1.6;
+}
+
+@media (max-width: 960px) {
+  .admin-dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+}

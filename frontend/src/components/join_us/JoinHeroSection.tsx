@@ -18,9 +18,9 @@ function JoinHeroSection() {
           </h1>
 
           <div className="join-hero__button-row">
-            <Link to="/contact" className="primary-btn">
-                Join Us Now
-              </Link>
+            <Link to="/join-us/apply" className="primary-btn">
+              Join Us Now
+            </Link>
           </div>
         </div>
 

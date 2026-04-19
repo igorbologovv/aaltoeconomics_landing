@@ -1,0 +1,33 @@
+.join-application-hero {
+  padding: 120px 0 72px;
+  background: #032455;
+  color: #ffffff;
+}
+
+.join-application-hero__content {
+  max-width: 900px;
+}
+
+.join-application-hero__eyebrow {
+  margin: 0 0 18px;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.join-application-hero__title {
+  margin: 0 0 20px;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+
+.join-application-hero__description {
+  margin: 0;
+  max-width: 720px;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.82);
+}
