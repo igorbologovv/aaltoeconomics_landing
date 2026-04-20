@@ -1,96 +1,110 @@
-import { useMemo, useState } from "react";
-import {
-  contactPeople as initialContactPeople,
-  type ContactPerson,
-} from "../../data/contactPeople";
+import { useState } from "react";
 
-import AdminContactHeaderSection from "../components/admin_contact/AdminContactHeaderSection";
-import AdminContactListSection from "../components/admin_contact/AdminContactListSection";
-import AdminContactEditorSection from "../components/admin_contact/AdminContactEditorSection";
+import "../styles/admin_login/admin-login-section.css";
 
-import "../styles/admin_contact/admin-contact-header.css";
-import "../styles/admin_contact/admin-contact-list.css";
-import "../styles/admin_contact/admin-contact-editor.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
-function createEmptyContactPerson(): ContactPerson {
-  return {
-    id: crypto.randomUUID(),
-    name: "",
-    role: "",
-    email: "",
-    image: "",
-  };
-}
+function AdminLoginPage() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-function AdminContactPage() {
-  const [people, setPeople] = useState<ContactPerson[]>([...initialContactPeople]);
-  const [selectedId, setSelectedId] = useState<string>(people[0]?.id ?? "");
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-  const selectedPerson = useMemo(
-    () => people.find((person) => person.id === selectedId) ?? null,
-    [people, selectedId]
-  );
+    setErrorMessage("");
 
-  const updateSelectedPerson = <K extends keyof ContactPerson>(
-    key: K,
-    value: ContactPerson[K]
-  ) => {
-    if (!selectedPerson) return;
+    if (!username.trim() || !password.trim()) {
+      setErrorMessage("Please enter both username and password.");
+      return;
+    }
+    try {
+      setIsSubmitting(true);
 
-    setPeople((current) =>
-      current.map((person) =>
-        person.id === selectedPerson.id ? { ...person, [key]: value } : person
-      )
-    );
-  };
+      const response = await fetch(`${API_URL}/api/admin/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username.trim(),
+          password,
+        }),
+      });
 
-  const handleAddNew = () => {
-    const newPerson = createEmptyContactPerson();
+      const data = await response.json();
 
-    setPeople((current) => [...current, newPerson]);
-    setSelectedId(newPerson.id);
-  };
+      if (!response.ok) {
+        setErrorMessage(data.message ?? "Login failed.");
+        return;
+      }
 
-  const handleDelete = () => {
-    if (!selectedPerson) return;
-
-    const confirmed = window.confirm(
-      `Delete contact "${selectedPerson.name || "Untitled contact"}"?`
-    );
-
-    if (!confirmed) return;
-
-    const nextPeople = people.filter((person) => person.id !== selectedPerson.id);
-
-    setPeople(nextPeople);
-    setSelectedId(nextPeople[0]?.id ?? "");
-  };
-
-  const handleSave = () => {
-    console.log("Current contact people:", people);
-    window.alert("Saved locally for now. Backend comes next.");
+      localStorage.setItem("adminToken", data.token);
+      window.location.href = "/admin";
+    } catch {
+      setErrorMessage("Unable to connect to the server.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <>
-      <AdminContactHeaderSection onAddNew={handleAddNew} />
+    <section className="admin-login-section">
+      <div className="admin-login-section__card">
+        <h1 className="admin-login-section__title">Admin Login</h1>
+        <p className="admin-login-section__text">
+          Sign in to manage Aalto Economics website content.
+        </p>
 
-      <div className="admin-contact-layout">
-        <AdminContactListSection
-          people={people}
-          selectedId={selectedId}
-          onSelect={setSelectedId}
-        />
+        <form className="admin-login-section__form" onSubmit={handleSubmit}>
+          <label className="admin-login-section__field">
+            <span>Username</span>
+            <input
+              type="text"
+              name="username"
+              autoComplete="username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              disabled={isSubmitting}
+            />
+          </label>
 
-        <AdminContactEditorSection
-          selectedPerson={selectedPerson}
-          onUpdateField={updateSelectedPerson}
-          onDelete={handleDelete}
-          onSave={handleSave}
-        />
+          <label className="admin-login-section__field">
+            <span>Password</span>
+            <input
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              disabled={isSubmitting}
+            />
+          </label>
+
+          {errorMessage ? (
+            <p
+              style={{
+                margin: 0,
+                color: "#b42318",
+                fontSize: "0.95rem",
+              }}
+            >
+              {errorMessage}
+            </p>
+          ) : null}
+
+          <button
+            type="submit"
+            className="admin-login-section__button"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Signing in..." : "Sign in"}
+          </button>
+        </form>
       </div>
-    </>
+    </section>
   );
 }
 
-export default AdminContactPage;
+export default AdminLoginPage;

@@ -48,6 +48,27 @@
   border-radius: 14px;
   padding: 14px 16px;
   font: inherit;
+  background: #ffffff;
+  color: #032455;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-login-section__field input:focus {
+  outline: none;
+  border-color: #032455;
+  box-shadow: 0 0 0 4px rgba(3, 36, 85, 0.08);
+}
+
+.admin-login-section__field input:disabled {
+  background: #f7f8fa;
+  cursor: not-allowed;
+}
+
+.admin-login-section__error {
+  margin: 0;
+  color: #b42318;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 .admin-login-section__button {
@@ -59,4 +80,18 @@
   font: inherit;
   font-weight: 600;
   cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-login-section__button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(3, 36, 85, 0.18);
+}
+
+.admin-login-section__button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
