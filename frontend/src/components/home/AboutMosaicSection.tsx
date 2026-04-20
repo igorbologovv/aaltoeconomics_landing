@@ -1,40 +1,64 @@
 import { Link } from "react-router-dom";
+import type { SiteContent } from "../../types/siteContent";
 
-function AboutMosaicSection() {
+type AboutMosaicSectionProps = {
+  content?: SiteContent["home"]["aboutMosaicSection"];
+};
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+function AboutMosaicSection({ content }: AboutMosaicSectionProps) {
+  if (!content) return null;
+
+  const imageSmallTop = content.imageSmallTop.startsWith("/uploads")
+    ? `${API_URL}${content.imageSmallTop}`
+    : content.imageSmallTop;
+
+  const imageLarge = content.imageLarge.startsWith("/uploads")
+    ? `${API_URL}${content.imageLarge}`
+    : content.imageLarge;
+
+  const imageSmallBottom = content.imageSmallBottom.startsWith("/uploads")
+    ? `${API_URL}${content.imageSmallBottom}`
+    : content.imageSmallBottom;
+
   return (
     <section className="about-mosaic">
       <div className="container about-mosaic__grid">
         <div className="about-mosaic__images">
           <img
             className="about-mosaic__img about-mosaic__img--small-top"
-            src="/images/home/about-small-1.jpg"
-            alt="Aalto Economics students"
+            src={imageSmallTop}
+            alt={content.imageSmallTopAlt}
+            loading="lazy"
           />
           <img
             className="about-mosaic__img about-mosaic__img--large"
-            src="/images/home/about-large.jpg"
-            alt="Aalto Economics community"
+            src={imageLarge}
+            alt={content.imageLargeAlt}
+            loading="lazy"
           />
           <img
             className="about-mosaic__img about-mosaic__img--small-bottom"
-            src="/images/home/about-small-2.jpg"
-            alt="Aalto Economics event"
+            src={imageSmallBottom}
+            alt={content.imageSmallBottomAlt}
+            loading="lazy"
           />
         </div>
 
         <div className="about-mosaic__text">
-          <p className="section-label">About Us</p>
-          <h2>Shaping the Future of Economics Together.</h2>
+          <p className="section-label">{content.label}</p>
+          <h2>{content.title}</h2>
 
           <ul className="about-mosaic__points">
-            <li>Innovative education in economics and research.</li>
-            <li>Strong connections with industry and alumni.</li>
-            <li>Engaging events for learning and networking.</li>
+            {content.points.map((point, index) => (
+              <li key={index}>{point}</li>
+            ))}
           </ul>
 
           <div className="about-mosaic__button-row">
-            <Link to="/for-alumni" className="primary-btn">
-              Learn More
+            <Link to={content.buttonHref} className="primary-btn">
+              {content.buttonText}
             </Link>
           </div>
         </div>

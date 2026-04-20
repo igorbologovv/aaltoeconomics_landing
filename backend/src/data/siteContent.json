@@ -1,0 +1,49 @@
+{
+  "home": {
+    "aboutSection": {
+      "label": "About",
+      "title": "Who are we?",
+      "paragraphOne": "We are Aalto Economics, the student association of economics students at Aalto University School of Business. Our goal is to take care of all the economics-minded students’ interests, well-being and future career paths, without forgetting about all the fun and exciting student activities.",
+      "paragraphTwo": "We’re proud of our connections with the Department of Economics and with leading economics-oriented companies. We aim to maintain a pathway for students to interact with the department as well as offer the best contacts, knowledge and experience for everyone interested in economics. We also keep in close touch with our alumni to stay on top of the different career possibilities.",
+      "buttonText": "Meet the team",
+      "buttonHref": "/for-alumni",
+      "image": "/images/home/who-we-are.jpg",
+      "imageAlt": "Aalto Economics board"
+    },
+    "activitiesSection": {
+      "label": "Activities",
+      "title": "What do we do?",
+      "paragraphOne": "We organize events for everyone interested in economics, including networking opportunities, company visits, panel discussions, and study trips. Most of our events are held in English.",
+      "paragraphTwo": "Our students’ well-being is a priority. We work closely with the department and make sure student voices are heard while creating meaningful activities around economics.",
+      "image": "/images/home/what-we-do.jpg",
+      "imageAlt": "Aalto Economics event"
+    },
+    "aboutMosaicSection": {
+      "label": "About Us",
+      "title": "Shaping the Future of Economics Together.",
+      "points": [
+        "Innovative education in economics and research.",
+        "Strong connections with industry and alumni.",
+        "Engaging events for learning and networking."
+      ],
+      "buttonText": "Learn More",
+      "buttonHref": "/for-alumni",
+      "imageSmallTop": "/images/home/about-small-1.jpg",
+      "imageSmallTopAlt": "Aalto Economics students",
+      "imageLarge": "/images/home/about-large.jpg",
+      "imageLargeAlt": "Aalto Economics community",
+      "imageSmallBottom": "/images/home/about-small-2.jpg",
+      "imageSmallBottomAlt": "Aalto Economics event"
+    },
+    "ctaSection": {
+      "label": "Get involved",
+      "title": "What can we offer you?",
+      "paragraphOne": "By becoming a member, you’ll stay up to date with our latest news. We’ll also keep you informed about job openings and upcoming events. To make sure you don’t miss anything, we recommend following our social media channels as well.",
+      "paragraphTwo": "If you represent a company or another stakeholder and are interested in collaborating with us, please get in touch with the Corporate Relations members of the current board.",
+      "primaryButtonText": "Join Us",
+      "primaryButtonHref": "/join-us",
+      "secondaryButtonText": "For Companies",
+      "secondaryButtonHref": "/for-companies"
+    }
+  }
+}

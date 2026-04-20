@@ -1,30 +1,36 @@
-function ActivitiesSection() {
+import type { SiteContent } from "../../types/siteContent";
+
+type ActivitiesSectionProps = {
+  content?: SiteContent["home"]["activitiesSection"];
+};
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+function ActivitiesSection({ content }: ActivitiesSectionProps) {
+  if (!content) return null;
+
+  const imageSrc = content.image.startsWith("/uploads")
+    ? `${API_URL}${content.image}`
+    : content.image;
+
   return (
     <section className="activities-section">
       <div className="container activities-section__grid">
         <div className="activities-section__image-wrap">
           <img
             className="activities-section__image"
-            src="/images/home/what-we-do.jpg"
-            alt="Aalto Economics event"
+            src={imageSrc}
+            alt={content.imageAlt}
+            loading="lazy"
           />
         </div>
 
         <div className="activities-section__text">
-          <p className="section-label">Activities</p>
-          <h2>What do we do?</h2>
+          <p className="section-label">{content.label}</p>
+          <h2>{content.title}</h2>
 
-          <p>
-            We organize events for everyone interested in economics, including
-            networking opportunities, company visits, panel discussions, and
-            study trips. Most of our events are held in English.
-          </p>
-
-          <p>
-            Our students’ well-being is a priority. We work closely with the
-            department and make sure student voices are heard while creating
-            meaningful activities around economics.
-          </p>
+          <p>{content.paragraphOne}</p>
+          <p>{content.paragraphTwo}</p>
         </div>
       </div>
     </section>

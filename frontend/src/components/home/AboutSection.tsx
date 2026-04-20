@@ -1,33 +1,32 @@
 import { Link } from "react-router-dom";
+import type { SiteContent } from "../../types/siteContent";
 
-function AboutSection() {
+type AboutSectionProps = {
+  content?: SiteContent["home"]["aboutSection"];
+};
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+function AboutSection({ content }: AboutSectionProps) {
+  if (!content) return null;
+
+  const imageSrc = content.image.startsWith("/uploads")
+    ? `${API_URL}${content.image}`
+    : content.image;
+
   return (
     <section className="about-section">
       <div className="container about-section__grid">
         <div className="about-section__text">
-          <p className="section-label">About</p>
-          <h2>Who are we?</h2>
+          <p className="section-label">{content.label}</p>
+          <h2>{content.title}</h2>
 
-          <p>
-            We are Aalto Economics, the student association of economics students
-            at Aalto University School of Business. Our goal is to take care of
-            all the economics-minded students’ interests, well-being and future
-            career paths, without forgetting about all the fun and exciting
-            student activities.
-          </p>
-
-          <p>
-            We’re proud of our connections with the Department of Economics and
-            with leading economics-oriented companies. We aim to maintain
-            a pathway for students to interact with the department as well
-            as offer the best contacts, knowledge and experience for everyone
-            interested in economics. We also keep in close touch with our alumni
-            to stay on top of the different career possibilities.
-          </p>
+          <p>{content.paragraphOne}</p>
+          <p>{content.paragraphTwo}</p>
 
           <div className="about-section__button-row">
-            <Link to="/for-alumni" className="primary-btn">
-              Meet the team
+            <Link to={content.buttonHref} className="primary-btn">
+              {content.buttonText}
             </Link>
           </div>
         </div>
@@ -35,8 +34,9 @@ function AboutSection() {
         <div className="about-section__image-wrap">
           <img
             className="about-section__image"
-            src="/images/home/who-we-are.jpg"
-            alt="Aalto Economics board"
+            src={imageSrc}
+            alt={content.imageAlt}
+            loading="lazy"
           />
         </div>
       </div>

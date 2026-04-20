@@ -11,6 +11,8 @@ import membershipPublicRoutes from "./routes/public/membership.routes.js";
 import membershipAdminRoutes from "./routes/admin/membership.routes.js";
 import openPositionsPublicRoutes from "./routes/public/open-positions.routes.js";
 import openPositionsAdminRoutes from "./routes/admin/open-positions.routes.js";
+import siteContentPublicRoutes from "./routes/public/site-content.routes.js";
+import siteContentAdminRoutes from "./routes/admin/site-content.routes.js";
 
 const app = express();
 
@@ -28,9 +30,10 @@ app.use("/api/admin/career-stories", careerStoriesAdminRoutes);
 app.use("/api/admin/membership-applications", membershipAdminRoutes);
 
 app.use("/api/open-positions", openPositionsPublicRoutes);
-
-
 app.use("/api/admin/open-positions", openPositionsAdminRoutes);
+
+app.use("/api/site-content", siteContentPublicRoutes);
+app.use("/api/admin/site-content", siteContentAdminRoutes);
 
 app.use("/uploads", express.static("uploads"));
 
