@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 type CareerStoryCardProps = {
   name: string;
   role: string;
   image: string;
   to: string;
-  variant?: "default" | "large" | "wide";
 };
 
 function CareerStoryCard({
@@ -13,15 +14,16 @@ function CareerStoryCard({
   role,
   image,
   to,
-  variant = "default",
 }: CareerStoryCardProps) {
+  const imageSrc = image.startsWith("/uploads") ? `${API_URL}${image}` : image;
+
   return (
     <Link
       to={to}
-      className={`career-story-card career-story-card--${variant}`}
+      className="career-story-card career-story-card--default"
       aria-label={`Read story of ${name}`}
     >
-      <img className="career-story-card__image" src={image} alt={name} />
+      <img className="career-story-card__image" src={imageSrc} alt={name} />
 
       <div className="career-story-card__overlay" />
 

@@ -1,15 +1,57 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { careerStories } from "../data/careerStories";
+import type { CareerStory } from "../types/careerStories";
 import "../styles/career_stories/career-story-detail.css";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 function CareerStoryDetailPage() {
   const { slug } = useParams<{ slug: string }>();
 
-  const story = useMemo(
-    () => careerStories.find((item) => item.slug === slug && item.isPublished !== false),
-    [slug]
-  );
+  const [story, setStory] = useState<CareerStory | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadStory = async () => {
+      if (!slug) {
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/api/career-stories/${slug}`);
+
+        if (response.status === 404) {
+          setStory(null);
+          return;
+        }
+
+        if (!response.ok) {
+          throw new Error("Failed to load career story");
+        }
+
+        const data = (await response.json()) as CareerStory;
+        setStory(data);
+      } catch (error) {
+        console.error(error);
+        setStory(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    void loadStory();
+  }, [slug]);
+
+  if (isLoading) {
+    return (
+      <section className="career-story-detail">
+        <div className="container career-story-detail__empty">
+          <h1>Loading story...</h1>
+        </div>
+      </section>
+    );
+  }
 
   if (!story) {
     return (
@@ -24,6 +66,10 @@ function CareerStoryDetailPage() {
     );
   }
 
+  const imageSrc = story.image.startsWith("/uploads")
+    ? `${API_URL}${story.image}`
+    : story.image;
+
   return (
     <section className="career-story-detail">
       <div className="container">
@@ -35,7 +81,7 @@ function CareerStoryDetailPage() {
           <div className="career-story-detail__image-wrap">
             <img
               className="career-story-detail__image"
-              src={story.image}
+              src={imageSrc}
               alt={story.name}
             />
           </div>
@@ -44,14 +90,11 @@ function CareerStoryDetailPage() {
             <p className="section-label">Career Story</p>
             <h1>{story.name}</h1>
             <p className="career-story-detail__role">{story.role}</p>
-            <p className="career-story-detail__excerpt">{story.excerpt}</p>
           </div>
         </div>
 
         <div className="career-story-detail__content">
-          {story.content.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          <p>{story.text}</p>
         </div>
       </div>
     </section>

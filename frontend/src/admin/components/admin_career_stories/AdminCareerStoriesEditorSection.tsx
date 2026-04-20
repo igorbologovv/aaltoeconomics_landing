@@ -1,4 +1,5 @@
-import type { CareerStory, StoryVariant } from "../../../data/careerStories";
+import { useState } from "react";
+import type { CareerStory } from "../../../types/careerStories";
 
 type AdminCareerStoriesEditorSectionProps = {
   selectedStory: CareerStory | null;
@@ -6,24 +7,20 @@ type AdminCareerStoriesEditorSectionProps = {
     key: K,
     value: CareerStory[K]
   ) => void;
-  onContentChange: (index: number, value: string) => void;
-  onAddParagraph: () => void;
-  onRemoveParagraph: (index: number) => void;
   onDelete: () => void;
   onSave: () => void;
 };
 
-const variantOptions: StoryVariant[] = ["default", "large", "wide"];
+const API_URL = import.meta.env.VITE_API_URL;
 
 function AdminCareerStoriesEditorSection({
   selectedStory,
   onUpdateField,
-  onContentChange,
-  onAddParagraph,
-  onRemoveParagraph,
   onDelete,
   onSave,
 }: AdminCareerStoriesEditorSectionProps) {
+  const [isUploading, setIsUploading] = useState(false);
+
   if (!selectedStory) {
     return (
       <section className="admin-career-stories-editor admin-career-stories-editor--empty">
@@ -32,6 +29,58 @@ function AdminCareerStoriesEditorSection({
       </section>
     );
   }
+
+  const handleImageUpload = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setIsUploading(true);
+
+      const token = localStorage.getItem("adminToken");
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch(`${API_URL}/api/admin/upload`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(data?.message ?? "Failed to upload image");
+      }
+
+      const imageUrl =
+        data?.url ?? data?.imageUrl ?? data?.path ?? data?.fileUrl;
+
+      if (!imageUrl || typeof imageUrl !== "string") {
+        throw new Error("Upload succeeded but no image URL was returned");
+      }
+
+      onUpdateField("image", imageUrl);
+    } catch (error) {
+      console.error(error);
+      window.alert(
+        error instanceof Error ? error.message : "Failed to upload image."
+      );
+    } finally {
+      setIsUploading(false);
+      event.target.value = "";
+    }
+  };
+
+  const previewImageSrc = selectedStory.image
+    ? selectedStory.image.startsWith("/uploads")
+      ? `${API_URL}${selectedStory.image}`
+      : selectedStory.image
+    : "";
 
   return (
     <section className="admin-career-stories-editor">
@@ -55,40 +104,6 @@ function AdminCareerStoriesEditorSection({
         </label>
 
         <label className="admin-career-stories-editor__field">
-          <span>Slug</span>
-          <input
-            type="text"
-            value={selectedStory.slug}
-            onChange={(event) => onUpdateField("slug", event.target.value)}
-          />
-        </label>
-
-        <label className="admin-career-stories-editor__field">
-          <span>Image URL</span>
-          <input
-            type="text"
-            value={selectedStory.image}
-            onChange={(event) => onUpdateField("image", event.target.value)}
-          />
-        </label>
-
-        <label className="admin-career-stories-editor__field">
-          <span>Variant</span>
-          <select
-            value={selectedStory.variant ?? "default"}
-            onChange={(event) =>
-              onUpdateField("variant", event.target.value as StoryVariant)
-            }
-          >
-            {variantOptions.map((variant) => (
-              <option key={variant} value={variant}>
-                {variant}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label className="admin-career-stories-editor__field">
           <span>Order</span>
           <input
             type="number"
@@ -98,65 +113,51 @@ function AdminCareerStoriesEditorSection({
             }
           />
         </label>
-      </div>
 
-      <label className="admin-career-stories-editor__field">
-        <span>Excerpt</span>
-        <textarea
-          rows={3}
-          value={selectedStory.excerpt}
-          onChange={(event) => onUpdateField("excerpt", event.target.value)}
-        />
-      </label>
+        <div className="admin-career-stories-editor__field admin-career-stories-editor__field--full">
+          <span>Image</span>
 
-      <div className="admin-career-stories-editor__field">
-        <div className="admin-career-stories-editor__field-row">
-          <span>Content paragraphs</span>
-
-          <button
-            type="button"
-            className="admin-career-stories-editor__secondary-button"
-            onClick={onAddParagraph}
-          >
-            Add paragraph
-          </button>
-        </div>
-
-        <div className="admin-career-stories-editor__paragraphs">
-          {selectedStory.content.map((paragraph, index) => (
-            <div
-              key={index}
-              className="admin-career-stories-editor__paragraph-item"
-            >
-              <textarea
-                rows={4}
-                value={paragraph}
-                onChange={(event) =>
-                  onContentChange(index, event.target.value)
-                }
+          {selectedStory.image ? (
+            <div className="admin-career-stories-editor__image-preview">
+              <img
+                src={previewImageSrc}
+                alt={selectedStory.name || "Story preview"}
               />
 
               <button
                 type="button"
-                className="admin-career-stories-editor__danger-button"
-                onClick={() => onRemoveParagraph(index)}
+                className="admin-career-stories-editor__secondary-button admin-career-stories-editor__image-remove"
+                onClick={() => onUpdateField("image", "")}
               >
-                Remove
+                Remove image
               </button>
             </div>
-          ))}
+          ) : null}
+
+          <input
+            type="file"
+            accept="image/png,image/jpeg,image/jpg,image/webp"
+            onChange={handleImageUpload}
+            disabled={isUploading}
+          />
+
+          <small>
+            {isUploading
+              ? "Uploading..."
+              : selectedStory.image
+                ? "Image uploaded successfully."
+                : "Choose an image file"}
+          </small>
         </div>
       </div>
 
-      <label className="admin-career-stories-editor__checkbox">
-        <input
-          type="checkbox"
-          checked={selectedStory.isPublished ?? false}
-          onChange={(event) =>
-            onUpdateField("isPublished", event.target.checked)
-          }
+      <label className="admin-career-stories-editor__field">
+        <span>Text</span>
+        <textarea
+          rows={12}
+          value={selectedStory.text}
+          onChange={(event) => onUpdateField("text", event.target.value)}
         />
-        <span>Published</span>
       </label>
 
       <div className="admin-career-stories-editor__actions">

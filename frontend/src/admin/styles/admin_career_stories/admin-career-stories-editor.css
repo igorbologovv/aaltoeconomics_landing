@@ -34,6 +34,10 @@
   gap: 8px;
 }
 
+.admin-career-stories-editor__field--full {
+  grid-column: 1 / -1;
+}
+
 .admin-career-stories-editor__field span {
   color: #032455;
   font-weight: 600;
@@ -49,6 +53,56 @@
   font: inherit;
   resize: vertical;
   background: #ffffff;
+  color: #032455;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.admin-career-stories-editor__field input:focus,
+.admin-career-stories-editor__field textarea:focus,
+.admin-career-stories-editor__field select:focus {
+  outline: none;
+  border-color: #032455;
+  box-shadow: 0 0 0 4px rgba(3, 36, 85, 0.08);
+}
+
+.admin-career-stories-editor__field input[type="file"] {
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.admin-career-stories-editor__field input:disabled,
+.admin-career-stories-editor__field textarea:disabled,
+.admin-career-stories-editor__field select:disabled {
+  background: #f7f8fa;
+  cursor: not-allowed;
+}
+
+.admin-career-stories-editor__field small {
+  color: #5f6b7a;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.admin-career-stories-editor__image-preview {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.admin-career-stories-editor__image-preview img {
+  width: 100%;
+  max-width: 320px;
+  max-height: 220px;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid #d5dbe3;
+  background: #f7f8fa;
+  object-fit: cover;
+}
+
+.admin-career-stories-editor__image-remove {
+  align-self: start;
 }
 
 .admin-career-stories-editor__field-row {
@@ -80,6 +134,12 @@
   font-weight: 600;
 }
 
+.admin-career-stories-editor__checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: #032455;
+}
+
 .admin-career-stories-editor__actions {
   display: flex;
   justify-content: space-between;
@@ -95,6 +155,14 @@
   font: inherit;
   font-weight: 600;
   cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.admin-career-stories-editor__primary-button:hover,
+.admin-career-stories-editor__secondary-button:hover,
+.admin-career-stories-editor__danger-button:hover {
+  transform: translateY(-1px);
 }
 
 .admin-career-stories-editor__primary-button {
@@ -102,9 +170,17 @@
   color: #ffffff;
 }
 
+.admin-career-stories-editor__primary-button:hover {
+  box-shadow: 0 10px 24px rgba(3, 36, 85, 0.18);
+}
+
 .admin-career-stories-editor__secondary-button {
   background: #e9eef5;
   color: #032455;
+}
+
+.admin-career-stories-editor__secondary-button:hover {
+  box-shadow: 0 8px 18px rgba(10, 37, 64, 0.1);
 }
 
 .admin-career-stories-editor__danger-button {
@@ -112,8 +188,24 @@
   color: #8a1f1f;
 }
 
+.admin-career-stories-editor__danger-button:hover {
+  box-shadow: 0 8px 18px rgba(138, 31, 31, 0.12);
+}
+
 @media (max-width: 1100px) {
   .admin-career-stories-editor__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .admin-career-stories-editor {
+    padding: 20px;
+  }
+
+  .admin-career-stories-editor__field-row,
+  .admin-career-stories-editor__actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
