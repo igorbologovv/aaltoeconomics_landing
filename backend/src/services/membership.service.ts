@@ -2,6 +2,7 @@ import { pool } from "../db/pool.js";
 import type {
   CreateMembershipApplicationInput,
   MembershipApplication,
+  MembershipStatus,
 } from "../types/membership.js";
 
 function mapRow(row: any): MembershipApplication {
@@ -24,47 +25,47 @@ function mapRow(row: any): MembershipApplication {
 export async function createMembershipApplication(
   input: CreateMembershipApplicationInput
 ): Promise<MembershipApplication> {
-  const query = `
-    INSERT INTO membership_applications (
-      email,
-      first_name,
-      last_name,
-      city,
-      ky_membership,
-      ayy_membership,
-      school,
-      major,
-      consent_accepted
-    )
-    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
-    RETURNING
-      id,
-      email,
-      first_name,
-      last_name,
-      city,
-      ky_membership,
-      ayy_membership,
-      school,
-      major,
-      consent_accepted,
-      status,
-      created_at
-  `;
+  const result = await pool.query(
+    `
+      INSERT INTO membership_applications (
+        email,
+        first_name,
+        last_name,
+        city,
+        ky_membership,
+        ayy_membership,
+        school,
+        major,
+        consent_accepted
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      RETURNING
+        id,
+        email,
+        first_name,
+        last_name,
+        city,
+        ky_membership,
+        ayy_membership,
+        school,
+        major,
+        consent_accepted,
+        status,
+        created_at
+    `,
+    [
+      input.email.trim().toLowerCase(),
+      input.firstName.trim(),
+      input.lastName.trim(),
+      input.city.trim(),
+      input.kyMembership,
+      input.ayyMembership,
+      input.school,
+      input.major.trim(),
+      input.consentAccepted,
+    ]
+  );
 
-  const values = [
-    input.email.trim().toLowerCase(),
-    input.firstName.trim(),
-    input.lastName.trim(),
-    input.city.trim(),
-    input.kyMembership,
-    input.ayyMembership,
-    input.school,
-    input.major.trim(),
-    input.consentAccepted,
-  ];
-
-  const result = await pool.query(query, values);
   return mapRow(result.rows[0]);
 }
 
@@ -90,4 +91,49 @@ export async function getMembershipApplications(): Promise<MembershipApplication
   );
 
   return result.rows.map(mapRow);
+}
+
+export async function updateMembershipApplicationStatus(
+  id: string,
+  status: MembershipStatus
+): Promise<MembershipApplication | null> {
+  const result = await pool.query(
+    `
+      UPDATE membership_applications
+      SET status = $2
+      WHERE id = $1
+      RETURNING
+        id,
+        email,
+        first_name,
+        last_name,
+        city,
+        ky_membership,
+        ayy_membership,
+        school,
+        major,
+        consent_accepted,
+        status,
+        created_at
+    `,
+    [id, status]
+  );
+
+  if ((result.rowCount ?? 0) === 0) {
+    return null;
+  }
+
+  return mapRow(result.rows[0]);
+}
+
+export async function deleteMembershipApplication(id: string): Promise<boolean> {
+  const result = await pool.query(
+    `
+      DELETE FROM membership_applications
+      WHERE id = $1
+    `,
+    [id]
+  );
+
+  return (result.rowCount ?? 0) > 0;
 }

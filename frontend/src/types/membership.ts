@@ -1,3 +1,9 @@
+export type MembershipApplicationStatus =
+  | "new"
+  | "reviewed"
+  | "accepted"
+  | "rejected";
+
 export type School = "BIZ" | "CHEM" | "ELEC" | "ENG" | "SCI" | "ARTS";
 
 export type MembershipApplicationPayload = {
@@ -23,6 +29,6 @@ export type MembershipApplication = {
   school: School;
   major: string;
   consentAccepted: boolean;
-  status: "new" | "reviewed" | "accepted" | "rejected";
+  status: MembershipApplicationStatus;
   createdAt: string;
 };

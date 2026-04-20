@@ -1,4 +1,4 @@
-import type { MembershipApplicationStatus } from "../../../data/membershipApplications";
+import type { MembershipApplicationStatus } from "../../../types/membership";
 
 type AdminMembershipApplicationsHeaderSectionProps = {
   count: number;

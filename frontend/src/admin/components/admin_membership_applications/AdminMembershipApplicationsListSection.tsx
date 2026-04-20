@@ -1,6 +1,4 @@
-import type {
-  MembershipApplication,
-} from "../../../data/membershipApplications";
+import type { MembershipApplication } from "../../../types/membership";
 
 type AdminMembershipApplicationsListSectionProps = {
   applications: MembershipApplication[];

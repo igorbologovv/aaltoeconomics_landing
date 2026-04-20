@@ -2,8 +2,25 @@ import type { Request, Response } from "express";
 import {
   createMembershipApplication,
   getMembershipApplications,
+  updateMembershipApplicationStatus,
+  deleteMembershipApplication,
 } from "../services/membership.service.js";
-import type { CreateMembershipApplicationInput, School } from "../types/membership.js";
+import type {
+  CreateMembershipApplicationInput,
+  MembershipStatus,
+  School,
+} from "../types/membership.js";
+
+type MembershipApplicationParams = {
+  id: string;
+};
+
+const allowedStatuses = new Set<MembershipStatus>([
+  "new",
+  "reviewed",
+  "accepted",
+  "rejected",
+]);
 
 const allowedSchools = new Set<School>([
   "BIZ",
@@ -45,15 +62,21 @@ export async function submitMembershipApplication(req: Request, res: Response) {
     }
 
     if (!city?.trim()) {
-      return res.status(400).json({ message: "Municipality of residence is required." });
+      return res
+        .status(400)
+        .json({ message: "Municipality of residence is required." });
     }
 
     if (typeof kyMembership !== "boolean") {
-      return res.status(400).json({ message: "KY membership must be selected." });
+      return res
+        .status(400)
+        .json({ message: "KY membership must be selected." });
     }
 
     if (typeof ayyMembership !== "boolean") {
-      return res.status(400).json({ message: "AYY membership must be selected." });
+      return res
+        .status(400)
+        .json({ message: "AYY membership must be selected." });
     }
 
     if (!school || !allowedSchools.has(school as School)) {
@@ -66,7 +89,8 @@ export async function submitMembershipApplication(req: Request, res: Response) {
 
     if (consentAccepted !== true) {
       return res.status(400).json({
-        message: "Consent to personal data processing and email communication is required.",
+        message:
+          "Consent to personal data processing and email communication is required.",
       });
     }
 
@@ -85,7 +109,9 @@ export async function submitMembershipApplication(req: Request, res: Response) {
     return res.status(201).json(application);
   } catch (error) {
     console.error("submitMembershipApplication error:", error);
-    return res.status(500).json({ message: "Failed to submit membership application." });
+    return res
+      .status(500)
+      .json({ message: "Failed to submit membership application." });
   }
 }
 
@@ -95,6 +121,65 @@ export async function listMembershipApplications(_req: Request, res: Response) {
     return res.status(200).json(applications);
   } catch (error) {
     console.error("listMembershipApplications error:", error);
-    return res.status(500).json({ message: "Failed to load membership applications." });
+    return res
+      .status(500)
+      .json({ message: "Failed to load membership applications." });
+  }
+}
+
+export async function patchMembershipApplicationStatus(
+  req: Request<MembershipApplicationParams>,
+  res: Response
+) {
+  try {
+    const id = req.params.id;
+    const { status } = req.body as { status?: MembershipStatus };
+
+    if (!id) {
+      return res.status(400).json({ message: "Application id is required." });
+    }
+
+    if (!status || !allowedStatuses.has(status)) {
+      return res.status(400).json({ message: "Valid status is required." });
+    }
+
+    const updated = await updateMembershipApplicationStatus(id, status);
+
+    if (!updated) {
+      return res.status(404).json({ message: "Application not found." });
+    }
+
+    return res.status(200).json(updated);
+  } catch (error) {
+    console.error("patchMembershipApplicationStatus error:", error);
+    return res
+      .status(500)
+      .json({ message: "Failed to update application status." });
+  }
+}
+
+export async function removeMembershipApplication(
+  req: Request<MembershipApplicationParams>,
+  res: Response
+) {
+  try {
+    const id = req.params.id;
+
+    if (!id) {
+      return res.status(400).json({ message: "Application id is required." });
+    }
+
+    const deleted = await deleteMembershipApplication(id);
+
+    if (!deleted) {
+      return res.status(404).json({ message: "Application not found." });
+    }
+
+    return res.status(204).send();
+  } catch (error) {
+    console.error("removeMembershipApplication error:", error);
+    return res
+      .status(500)
+      .json({ message: "Failed to delete application." });
   }
 }

@@ -1,7 +1,7 @@
 import type {
   MembershipApplication,
   MembershipApplicationStatus,
-} from "../../../data/membershipApplications";
+} from "../../../types/membership";
 
 type AdminMembershipApplicationsDetailsSectionProps = {
   application: MembershipApplication | null;
@@ -9,10 +9,8 @@ type AdminMembershipApplicationsDetailsSectionProps = {
   onDelete: () => void;
 };
 
-function formatBooleanValue(value: boolean | null) {
-  if (value === true) return "Yes";
-  if (value === false) return "No";
-  return "Not provided";
+function formatBooleanValue(value: boolean) {
+  return value ? "Yes" : "No";
 }
 
 function formatDate(value: string) {
@@ -64,6 +62,11 @@ function AdminMembershipApplicationsDetailsSection({
         </div>
 
         <div className="admin-membership-applications-details__field">
+          <span>School</span>
+          <strong>{application.school}</strong>
+        </div>
+
+        <div className="admin-membership-applications-details__field">
           <span>Major</span>
           <strong>{application.major}</strong>
         </div>
@@ -81,6 +84,11 @@ function AdminMembershipApplicationsDetailsSection({
         <div className="admin-membership-applications-details__field">
           <span>AYY membership</span>
           <strong>{formatBooleanValue(application.ayyMembership)}</strong>
+        </div>
+
+        <div className="admin-membership-applications-details__field">
+          <span>Consent accepted</span>
+          <strong>{formatBooleanValue(application.consentAccepted)}</strong>
         </div>
       </div>
 
