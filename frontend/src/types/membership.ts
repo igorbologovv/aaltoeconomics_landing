@@ -1,15 +1,13 @@
-export type MembershipStatus = "new" | "reviewed" | "accepted" | "rejected";
-
 export type School = "BIZ" | "CHEM" | "ELEC" | "ENG" | "SCI" | "ARTS";
 
-export type CreateMembershipApplicationInput = {
+export type MembershipApplicationPayload = {
   firstName: string;
   lastName: string;
   email: string;
   city: string;
-  kyMembership: boolean;
-  ayyMembership: boolean;
-  school: School;
+  kyMembership: boolean | null;
+  ayyMembership: boolean | null;
+  school: School | "";
   major: string;
   consentAccepted: boolean;
 };
@@ -25,6 +23,6 @@ export type MembershipApplication = {
   school: School;
   major: string;
   consentAccepted: boolean;
-  status: MembershipStatus;
+  status: "new" | "reviewed" | "accepted" | "rejected";
   createdAt: string;
 };
