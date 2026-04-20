@@ -1,0 +1,16 @@
+[
+  {
+    "id": "nordea-summer-analyst",
+    "title": "Summer Analyst",
+    "company": "Nordea",
+    "type": "Internship",
+    "location": "Helsinki",
+    "deadline": "2026-05-15",
+    "summary": "Join the team for a summer internship in finance and analytics.",
+    "description": "You will support the team with analysis, reporting, and project work. This role is ideal for students interested in finance, economics, and business analysis.",
+    "logo": "/images/open_positions/nordea.png",
+    "applyUrl": "https://example.com/nordea-summer-analyst",
+    "isPublished": true,
+    "order": 1
+  }
+]

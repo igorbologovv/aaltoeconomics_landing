@@ -9,7 +9,7 @@ function AdminOpenPositionsHeaderSection({
     <section className="admin-open-positions-header">
       <div className="admin-open-positions-header__content">
         <h1>Open Positions</h1>
-        <p>Manage job listings, deadlines, links, and publishing state.</p>
+        <p>Manage job listings, deadlines, links, logos, and publishing state.</p>
       </div>
 
       <button

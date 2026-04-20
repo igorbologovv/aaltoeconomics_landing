@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { openPositions as initialOpenPositions } from "../../data/openPositions";
+import { useEffect, useMemo, useState } from "react";
+import type { OpenPosition } from "../../types/openPositions";
 
 import AdminOpenPositionsHeaderSection from "../components/admin_open_positions/AdminOpenPositionsHeaderSection";
 import AdminOpenPositionsListSection from "../components/admin_open_positions/AdminOpenPositionsListSection";
@@ -9,20 +9,7 @@ import "../styles/admin_open_positions/admin-open-positions-header.css";
 import "../styles/admin_open_positions/admin-open-positions-list.css";
 import "../styles/admin_open_positions/admin-open-positions-editor.css";
 
-type OpenPosition = {
-  id: string;
-  title: string;
-  company: string;
-  type: string;
-  location: string;
-  deadline: string;
-  summary: string;
-  description: string[];
-  logo?: string;
-  applyUrl: string;
-  isPublished: boolean;
-  order: number;
-};
+const API_URL = import.meta.env.VITE_API_URL;
 
 function createEmptyPosition(nextOrder: number): OpenPosition {
   return {
@@ -33,7 +20,7 @@ function createEmptyPosition(nextOrder: number): OpenPosition {
     location: "",
     deadline: "",
     summary: "",
-    description: [""],
+    description: "",
     logo: "",
     applyUrl: "",
     isPublished: false,
@@ -42,11 +29,50 @@ function createEmptyPosition(nextOrder: number): OpenPosition {
 }
 
 function AdminOpenPositionsPage() {
-  const [positions, setPositions] = useState<OpenPosition[]>(
-    [...initialOpenPositions].sort((a, b) => a.order - b.order)
-  );
+  const [positions, setPositions] = useState<OpenPosition[]>([]);
+  const [selectedId, setSelectedId] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [saveMessage, setSaveMessage] = useState("");
 
-  const [selectedId, setSelectedId] = useState<string>(positions[0]?.id ?? "");
+  useEffect(() => {
+    const loadPositions = async () => {
+      try {
+        setErrorMessage("");
+        setSaveMessage("");
+
+        const token = localStorage.getItem("adminToken");
+
+        const response = await fetch(`${API_URL}/api/admin/open-positions`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const rawText = await response.text();
+        const data = rawText ? JSON.parse(rawText) : [];
+
+        if (!response.ok) {
+          throw new Error(data?.message || "Failed to load open positions.");
+        }
+
+        if (!Array.isArray(data)) {
+          throw new Error("Invalid open positions response.");
+        }
+
+        setPositions(data);
+        setSelectedId(data[0]?.id ?? "");
+      } catch (error) {
+        setErrorMessage(
+          error instanceof Error ? error.message : "Failed to load open positions."
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    void loadPositions();
+  }, []);
 
   const selectedPosition = useMemo(
     () => positions.find((position) => position.id === selectedId) ?? null,
@@ -66,33 +92,8 @@ function AdminOpenPositionsPage() {
           : position
       )
     );
-  };
 
-  const handleDescriptionChange = (index: number, value: string) => {
-    if (!selectedPosition) return;
-
-    const nextDescription = [...selectedPosition.description];
-    nextDescription[index] = value;
-
-    updateSelectedPosition("description", nextDescription);
-  };
-
-  const handleAddBullet = () => {
-    if (!selectedPosition) return;
-    updateSelectedPosition("description", [...selectedPosition.description, ""]);
-  };
-
-  const handleRemoveBullet = (index: number) => {
-    if (!selectedPosition) return;
-
-    const nextDescription = selectedPosition.description.filter(
-      (_, itemIndex) => itemIndex !== index
-    );
-
-    updateSelectedPosition(
-      "description",
-      nextDescription.length > 0 ? nextDescription : [""]
-    );
+    setSaveMessage("");
   };
 
   const handleAddNew = () => {
@@ -105,9 +106,10 @@ function AdminOpenPositionsPage() {
 
     setPositions((current) => [...current, newPosition]);
     setSelectedId(newPosition.id);
+    setSaveMessage("");
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (!selectedPosition) return;
 
     const confirmed = window.confirm(
@@ -116,18 +118,102 @@ function AdminOpenPositionsPage() {
 
     if (!confirmed) return;
 
-    const nextPositions = positions.filter(
-      (position) => position.id !== selectedPosition.id
+    try {
+      const token = localStorage.getItem("adminToken");
+
+      const response = await fetch(
+        `${API_URL}/api/admin/open-positions/${selectedPosition.id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        let message = "Failed to delete open position.";
+
+        try {
+          const data = await response.json();
+          message = data?.message || message;
+        } catch {
+          // ignore
+        }
+
+        throw new Error(message);
+      }
+
+      const nextPositions = positions.filter(
+        (position) => position.id !== selectedPosition.id
+      );
+
+      setPositions(nextPositions);
+      setSelectedId(nextPositions[0]?.id ?? "");
+      setSaveMessage("Position deleted.");
+    } catch (error) {
+      window.alert(
+        error instanceof Error ? error.message : "Failed to delete open position."
+      );
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      const token = localStorage.getItem("adminToken");
+
+      const response = await fetch(`${API_URL}/api/admin/open-positions`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(positions),
+      });
+
+      const rawText = await response.text();
+      const data = rawText ? JSON.parse(rawText) : null;
+
+      if (!response.ok) {
+        throw new Error(
+          (data && typeof data === "object" && "message" in data && data.message) ||
+            "Failed to save open positions."
+        );
+      }
+
+      if (Array.isArray(data)) {
+        setPositions(data);
+        setSelectedId((current) => current || data[0]?.id || "");
+      }
+
+      setSaveMessage("Open positions saved successfully.");
+    } catch (error) {
+      window.alert(
+        error instanceof Error ? error.message : "Failed to save open positions."
+      );
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <section className="admin-open-positions-page-state">
+        <div className="container">
+          <h1>Loading open positions...</h1>
+        </div>
+      </section>
     );
+  }
 
-    setPositions(nextPositions);
-    setSelectedId(nextPositions[0]?.id ?? "");
-  };
-
-  const handleSave = () => {
-    console.log("Current positions:", positions);
-    window.alert("Saved locally for now. Backend comes next.");
-  };
+  if (errorMessage) {
+    return (
+      <section className="admin-open-positions-page-state">
+        <div className="container">
+          <h1>Could not load open positions</h1>
+          <p>{errorMessage}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <>
@@ -140,15 +226,20 @@ function AdminOpenPositionsPage() {
           onSelect={setSelectedId}
         />
 
-        <AdminOpenPositionsEditorSection
-          selectedPosition={selectedPosition}
-          onUpdateField={updateSelectedPosition}
-          onDescriptionChange={handleDescriptionChange}
-          onAddBullet={handleAddBullet}
-          onRemoveBullet={handleRemoveBullet}
-          onDelete={handleDelete}
-          onSave={handleSave}
-        />
+        <div>
+          {saveMessage ? (
+            <p className="admin-open-positions-page__save-message">
+              {saveMessage}
+            </p>
+          ) : null}
+
+          <AdminOpenPositionsEditorSection
+            selectedPosition={selectedPosition}
+            onUpdateField={updateSelectedPosition}
+            onDelete={handleDelete}
+            onSave={handleSave}
+          />
+        </div>
       </div>
     </>
   );

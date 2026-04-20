@@ -1,17 +1,7 @@
-type OpenPosition = {
-  id: string;
-  title: string;
-  company: string;
-  type: string;
-  location: string;
-  deadline: string;
-  summary: string;
-  description: string[];
-  logo?: string;
-  applyUrl: string;
-  isPublished: boolean;
-  order: number;
-};
+import { useState } from "react";
+import type { OpenPosition } from "../../../types/openPositions";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 type AdminOpenPositionsEditorSectionProps = {
   selectedPosition: OpenPosition | null;
@@ -19,9 +9,6 @@ type AdminOpenPositionsEditorSectionProps = {
     key: K,
     value: OpenPosition[K]
   ) => void;
-  onDescriptionChange: (index: number, value: string) => void;
-  onAddBullet: () => void;
-  onRemoveBullet: (index: number) => void;
   onDelete: () => void;
   onSave: () => void;
 };
@@ -29,12 +16,12 @@ type AdminOpenPositionsEditorSectionProps = {
 function AdminOpenPositionsEditorSection({
   selectedPosition,
   onUpdateField,
-  onDescriptionChange,
-  onAddBullet,
-  onRemoveBullet,
   onDelete,
   onSave,
 }: AdminOpenPositionsEditorSectionProps) {
+  const [isUploadingLogo, setIsUploadingLogo] = useState(false);
+  const [uploadMessage, setUploadMessage] = useState("");
+
   if (!selectedPosition) {
     return (
       <section className="admin-open-positions-editor admin-open-positions-editor--empty">
@@ -43,6 +30,52 @@ function AdminOpenPositionsEditorSection({
       </section>
     );
   }
+
+  const logoSrc =
+    selectedPosition.logo && selectedPosition.logo.startsWith("/uploads")
+      ? `${API_URL}${selectedPosition.logo}`
+      : selectedPosition.logo || "";
+
+  const handleLogoUpload = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    setUploadMessage("");
+    setIsUploadingLogo(true);
+
+    try {
+      const token = localStorage.getItem("adminToken");
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch(`${API_URL}/api/admin/upload`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.message || "Failed to upload logo.");
+      }
+
+      onUpdateField("logo", data.url ?? "");
+      setUploadMessage("Logo uploaded successfully.");
+      event.target.value = "";
+    } catch (error) {
+      setUploadMessage(
+        error instanceof Error ? error.message : "Failed to upload logo."
+      );
+      event.target.value = "";
+    } finally {
+      setIsUploadingLogo(false);
+    }
+  };
 
   return (
     <section className="admin-open-positions-editor">
@@ -102,15 +135,6 @@ function AdminOpenPositionsEditorSection({
         </label>
 
         <label className="admin-open-positions-editor__field">
-          <span>Logo URL</span>
-          <input
-            type="text"
-            value={selectedPosition.logo ?? ""}
-            onChange={(event) => onUpdateField("logo", event.target.value)}
-          />
-        </label>
-
-        <label className="admin-open-positions-editor__field">
           <span>Order</span>
           <input
             type="number"
@@ -122,6 +146,50 @@ function AdminOpenPositionsEditorSection({
         </label>
       </div>
 
+      <div className="admin-open-positions-editor__field">
+        <span>Logo</span>
+
+        <div className="admin-open-positions-editor__logo-actions">
+          <label className="admin-open-positions-editor__upload-button">
+            <input
+              type="file"
+              accept="image/png,image/jpeg,image/jpg,image/webp"
+              onChange={handleLogoUpload}
+              hidden
+            />
+            {isUploadingLogo ? "Uploading..." : "Upload logo"}
+          </label>
+
+          {selectedPosition.logo ? (
+            <button
+              type="button"
+              className="admin-open-positions-editor__danger-button"
+              onClick={() => {
+                onUpdateField("logo", "");
+                setUploadMessage("");
+              }}
+            >
+              Remove logo
+            </button>
+          ) : null}
+        </div>
+
+        {uploadMessage ? (
+          <p className="admin-open-positions-editor__upload-message">
+            {uploadMessage}
+          </p>
+        ) : null}
+
+        {logoSrc ? (
+          <div className="admin-open-positions-editor__logo-preview">
+            <img
+              src={logoSrc}
+              alt={selectedPosition.company || selectedPosition.title}
+            />
+          </div>
+        ) : null}
+      </div>
+
       <label className="admin-open-positions-editor__field">
         <span>Summary</span>
         <textarea
@@ -131,44 +199,14 @@ function AdminOpenPositionsEditorSection({
         />
       </label>
 
-      <div className="admin-open-positions-editor__field">
-        <div className="admin-open-positions-editor__field-row">
-          <span>Description bullets</span>
-
-          <button
-            type="button"
-            className="admin-open-positions-editor__secondary-button"
-            onClick={onAddBullet}
-          >
-            Add bullet
-          </button>
-        </div>
-
-        <div className="admin-open-positions-editor__bullets">
-          {selectedPosition.description.map((item, index) => (
-            <div
-              key={index}
-              className="admin-open-positions-editor__bullet-item"
-            >
-              <textarea
-                rows={3}
-                value={item}
-                onChange={(event) =>
-                  onDescriptionChange(index, event.target.value)
-                }
-              />
-
-              <button
-                type="button"
-                className="admin-open-positions-editor__danger-button"
-                onClick={() => onRemoveBullet(index)}
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
+      <label className="admin-open-positions-editor__field">
+        <span>Description</span>
+        <textarea
+          rows={10}
+          value={selectedPosition.description}
+          onChange={(event) => onUpdateField("description", event.target.value)}
+        />
+      </label>
 
       <label className="admin-open-positions-editor__checkbox">
         <input
