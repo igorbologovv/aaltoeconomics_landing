@@ -1,7 +1,9 @@
-import "express";
+import type { JwtPayload } from "./auth";
 
 declare module "express-serve-static-core" {
   interface Request {
-    file?: Express.Multer.File;
+    admin?: JwtPayload;
   }
 }
+
+export {};
