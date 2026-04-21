@@ -1,22 +1,31 @@
 import { Link } from "react-router-dom";
+import type { SiteContent } from "../../types/siteContent";
 
-function JoinMembersSection() {
+type JoinMembersSectionProps = {
+  content?: SiteContent["joinUs"]["membersSection"];
+};
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+function JoinMembersSection({ content }: JoinMembersSectionProps) {
+  if (!content) return null;
+
+  const imageSrc = content.image.startsWith("/uploads")
+    ? `${API_URL}${content.image}`
+    : content.image;
+
   return (
     <section className="join-members">
       <div className="container join-members__grid">
         <div className="join-members__text">
-          <p className="section-label">Our Community</p>
-          <h2>Our Members</h2>
+          <p className="section-label">{content.label}</p>
+          <h2>{content.title}</h2>
 
-          <p>
-            Our members are passionate students from diverse academic
-            backgrounds who share a strong interest in economics. They come
-            together to learn, discuss, and apply economic ideas.
-          </p>
+          <p>{content.paragraph}</p>
 
           <div className="join-members__button-row">
-            <Link to="/for-alumni" className="primary-btn">
-              Meet the team
+            <Link to={content.buttonHref} className="primary-btn">
+              {content.buttonText}
             </Link>
           </div>
         </div>
@@ -24,8 +33,9 @@ function JoinMembersSection() {
         <div className="join-members__image-wrap">
           <img
             className="join-members__image"
-            src="/images/join/join-members.jpg"
-            alt="Aalto Economics members"
+            src={imageSrc}
+            alt={content.imageAlt}
+            loading="lazy"
           />
         </div>
       </div>

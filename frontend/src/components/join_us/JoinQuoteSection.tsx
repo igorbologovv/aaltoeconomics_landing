@@ -1,4 +1,18 @@
-function JoinQuoteSection() {
+import type { SiteContent } from "../../types/siteContent";
+
+type JoinQuoteSectionProps = {
+  content?: SiteContent["joinUs"]["quoteSection"];
+};
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+function JoinQuoteSection({ content }: JoinQuoteSectionProps) {
+  if (!content) return null;
+
+  const imageSrc = content.image.startsWith("/uploads")
+    ? `${API_URL}${content.image}`
+    : content.image;
+
   return (
     <section className="join-quote">
       <div className="container join-quote__grid">
@@ -8,19 +22,18 @@ function JoinQuoteSection() {
           </div>
 
           <blockquote className="join-quote__text">
-            At the School of Economics, we value innovation, integrity, and
-            collaboration. We empower students to think critically, embrace
-            diversity, and tackle global challenges.
+            {content.quote}
           </blockquote>
 
-          <p className="join-quote__author">Iikka Korhonen</p>
+          <p className="join-quote__author">{content.author}</p>
         </div>
 
         <div className="join-quote__image-wrap">
           <img
             className="join-quote__image"
-            src="/images/join/iikka-korhonen.jpg"
-            alt="Portrait of Iikka Korhonen"
+            src={imageSrc}
+            alt={content.imageAlt}
+            loading="lazy"
           />
         </div>
       </div>

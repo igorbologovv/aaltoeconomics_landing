@@ -42,4 +42,43 @@ export type SiteContent = {
       secondaryButtonHref: string;
     };
   };
+  joinUs: {
+    membersSection: {
+      label: string;
+      title: string;
+      paragraph: string;
+      buttonText: string;
+      buttonHref: string;
+      image: string;
+      imageAlt: string;
+    };
+    networkingSection: {
+      label: string;
+      title: string;
+      lead: string;
+      paragraph: string;
+      image: string;
+      imageAlt: string;
+    };
+    eventsSection: {
+      label: string;
+      title: string;
+      paragraphOne: string;
+      paragraphTwo: string;
+      buttonText: string;
+      buttonHref: string;
+      imageSmallTop: string;
+      imageSmallTopAlt: string;
+      imageLarge: string;
+      imageLargeAlt: string;
+      imageSmallBottom: string;
+      imageSmallBottomAlt: string;
+    };
+    quoteSection: {
+      quote: string;
+      author: string;
+      image: string;
+      imageAlt: string;
+    };
+  };
 };

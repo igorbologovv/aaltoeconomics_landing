@@ -19,7 +19,8 @@ import AdminCareerStoriesPage from "./admin/pages/AdminCareerStoriesPage";
 import AdminContactPage from "./admin/pages/AdminContactPage";
 import AdminOpenPositionsPage from "./admin/pages/AdminOpenPositionsPage";
 import AdminMembershipApplicationsPage from "./admin/pages/AdminMembershipApplicationsPage";
-import AdminSiteContentPage from "./admin/pages/AdminSiteContentPage";
+import AdminHomeContentPage from "./admin/pages/AdminHomeContentPage";
+import AdminJoinUsContentPage from "./admin/pages/AdminJoinUsContentPage";
 
 function App() {
   return (
@@ -47,7 +48,8 @@ function App() {
         }
       >
         <Route index element={<AdminDashboardPage />} />
-        <Route path="site-content" element={<AdminSiteContentPage />} />
+        <Route path="home-content" element={<AdminHomeContentPage />} />
+        <Route path="join-us-content" element={<AdminJoinUsContentPage />} />
         <Route path="career-stories" element={<AdminCareerStoriesPage />} />
         <Route path="contact-people" element={<AdminContactPage />} />
         <Route path="open-positions" element={<AdminOpenPositionsPage />} />

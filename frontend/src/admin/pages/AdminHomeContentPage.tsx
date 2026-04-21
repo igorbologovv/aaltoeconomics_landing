@@ -9,7 +9,7 @@ import "../styles/admin_site_content/admin-site-content-editor.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-function AdminSiteContentPage() {
+function AdminHomeContentPage() {
   const [content, setContent] = useState<SiteContent | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
@@ -148,4 +148,4 @@ function AdminSiteContentPage() {
   );
 }
 
-export default AdminSiteContentPage;
+export default AdminHomeContentPage;

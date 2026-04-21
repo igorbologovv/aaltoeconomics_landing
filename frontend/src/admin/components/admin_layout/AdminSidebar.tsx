@@ -29,14 +29,25 @@ function AdminSidebar() {
         </NavLink>
 
         <NavLink
-          to="/admin/site-content"
+          to="/admin/home-content"
           className={({ isActive }) =>
             isActive
               ? "admin-sidebar__link admin-sidebar__link--active"
               : "admin-sidebar__link"
           }
         >
-          Site Content
+          Home Content
+        </NavLink>
+
+        <NavLink
+          to="/admin/join-us-content"
+          className={({ isActive }) =>
+            isActive
+              ? "admin-sidebar__link admin-sidebar__link--active"
+              : "admin-sidebar__link"
+          }
+        >
+          Join Us Content
         </NavLink>
 
         <NavLink

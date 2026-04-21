@@ -7,7 +7,7 @@
       "paragraphTwo": "We’re proud of our connections with the Department of Economics and with leading economics-oriented companies. We aim to maintain a pathway for students to interact with the department as well as offer the best contacts, knowledge and experience for everyone interested in economics. We also keep in close touch with our alumni to stay on top of the different career possibilities.",
       "buttonText": "Meet the team",
       "buttonHref": "/for-alumni",
-      "image": "/uploads/contact/93d29b21-2647-46d0-828b-4953e94bc25a.jpg",
+      "image": "/images/home/who-we-are.jpg",
       "imageAlt": "Aalto Economics board"
     },
     "activitiesSection": {
@@ -44,6 +44,45 @@
       "primaryButtonHref": "/join-us",
       "secondaryButtonText": "For Companies",
       "secondaryButtonHref": "/for-companies"
+    }
+  },
+  "joinUs": {
+    "membersSection": {
+      "label": "Our Community",
+      "title": "Our Members",
+      "paragraph": "Our members are passionate students from diverse academic backgrounds who share a strong interest in economics. They come together to learn, discuss, and apply economic ideas.",
+      "buttonText": "Meet the team",
+      "buttonHref": "/for-alumni",
+      "image": "/images/join/join-members.jpg",
+      "imageAlt": "Aalto Economics members"
+    },
+    "networkingSection": {
+      "label": "Networking",
+      "title": "Networking",
+      "lead": "Networking at Aalto Economics goes beyond the classroom.",
+      "paragraph": "Our vibrant community of students, alumni, and industry experts fosters meaningful connections, opening doors to mentorship, collaborations, and career opportunities in the world of economics.",
+      "image": "/images/join/networking.jpg",
+      "imageAlt": "Aalto Economics networking event"
+    },
+    "eventsSection": {
+      "label": "Events",
+      "title": "Our Events",
+      "paragraphOne": "From company visits and academic discussions to parties, dinners, and community gatherings, our events bring students together in meaningful and memorable ways throughout the year.",
+      "paragraphTwo": "We create opportunities to learn, connect, and enjoy student life with people who share an interest in economics and ambition for the future.",
+      "buttonText": "Discover our events",
+      "buttonHref": "/contact",
+      "imageSmallTop": "/images/join/events-1.jpg",
+      "imageSmallTopAlt": "Aalto Economics event",
+      "imageLarge": "/images/join/events-2.jpg",
+      "imageLargeAlt": "Aalto Economics student event",
+      "imageSmallBottom": "/images/join/events-3.jpg",
+      "imageSmallBottomAlt": "Aalto Economics community gathering"
+    },
+    "quoteSection": {
+      "quote": "At the School of Economics, we value innovation, integrity, and collaboration. We empower students to think critically, embrace diversity, and tackle global challenges.",
+      "author": "Iikka Korhonen",
+      "image": "/images/join/iikka-korhonen.jpg",
+      "imageAlt": "Portrait of Iikka Korhonen"
     }
   }
 }
