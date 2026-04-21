@@ -4,7 +4,7 @@ function AdminSidebar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("adminAuth");
+    localStorage.removeItem("adminToken");
     navigate("/admin/login");
   };
 
@@ -26,6 +26,17 @@ function AdminSidebar() {
           }
         >
           Dashboard
+        </NavLink>
+
+        <NavLink
+          to="/admin/site-content"
+          className={({ isActive }) =>
+            isActive
+              ? "admin-sidebar__link admin-sidebar__link--active"
+              : "admin-sidebar__link"
+          }
+        >
+          Site Content
         </NavLink>
 
         <NavLink

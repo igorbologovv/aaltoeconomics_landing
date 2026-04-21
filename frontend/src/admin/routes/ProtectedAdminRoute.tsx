@@ -6,7 +6,8 @@ type ProtectedAdminRouteProps = {
 };
 
 function ProtectedAdminRoute({ children }: ProtectedAdminRouteProps) {
-  const isAuthenticated = localStorage.getItem("adminAuth") === "true";
+  const token = localStorage.getItem("adminToken");
+  const isAuthenticated = Boolean(token);
 
   if (!isAuthenticated) {
     return <Navigate to="/admin/login" replace />;
