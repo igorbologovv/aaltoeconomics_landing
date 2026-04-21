@@ -81,4 +81,22 @@ export type SiteContent = {
       imageAlt: string;
     };
   };
+  alumni: {
+    socialSection: {
+      label: string;
+      title: string;
+      intro: string;
+      telegramUrl: string;
+      instagramUrl: string;
+      linkedinUrl: string;
+    };
+    opportunitiesSection: {
+      label: string;
+      title: string;
+      lead: string;
+      points: string[];
+      image: string;
+      imageAlt: string;
+    };
+  };
 };

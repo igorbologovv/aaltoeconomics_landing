@@ -84,5 +84,27 @@
       "image": "/images/join/iikka-korhonen.jpg",
       "imageAlt": "Portrait of Iikka Korhonen"
     }
+  },
+  "alumni": {
+    "socialSection": {
+      "label": "Stay connected",
+      "title": "Keep in touch with our alumni community",
+      "intro": "Follow our channels to stay updated on alumni news, networking opportunities, community highlights, and upcoming events.",
+      "telegramUrl": "https://t.me/+qbi_I04YhGozNjA0#",
+      "instagramUrl": "https://www.instagram.com/aalto_economics/",
+      "linkedinUrl": "https://www.linkedin.com/company/aalto-economics/"
+    },
+    "opportunitiesSection": {
+      "label": "Opportunities",
+      "title": "There is something for everyone at Aalto Economics Alumni.",
+      "lead": "We’re here to help you connect, learn and grow every step of the way.",
+      "points": [
+        "Stay part of a strong and growing alumni network.",
+        "Join events, reconnect, and discover new opportunities.",
+        "Share your experience and support the next generation."
+      ],
+      "image": "/images/alumni/alumni-opportunities.jpg",
+      "imageAlt": "Aalto Economics alumni community"
+    }
   }
 }

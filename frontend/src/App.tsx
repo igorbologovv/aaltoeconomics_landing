@@ -21,6 +21,7 @@ import AdminOpenPositionsPage from "./admin/pages/AdminOpenPositionsPage";
 import AdminMembershipApplicationsPage from "./admin/pages/AdminMembershipApplicationsPage";
 import AdminHomeContentPage from "./admin/pages/AdminHomeContentPage";
 import AdminJoinUsContentPage from "./admin/pages/AdminJoinUsContentPage";
+import AdminAlumniContentPage from "./admin/pages/AdminAlumniContentPage";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route index element={<AdminDashboardPage />} />
         <Route path="home-content" element={<AdminHomeContentPage />} />
         <Route path="join-us-content" element={<AdminJoinUsContentPage />} />
+        <Route path="alumni-content" element={<AdminAlumniContentPage />} />
         <Route path="career-stories" element={<AdminCareerStoriesPage />} />
         <Route path="contact-people" element={<AdminContactPage />} />
         <Route path="open-positions" element={<AdminOpenPositionsPage />} />

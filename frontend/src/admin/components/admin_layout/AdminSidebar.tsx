@@ -51,6 +51,17 @@ function AdminSidebar() {
         </NavLink>
 
         <NavLink
+          to="/admin/alumni-content"
+          className={({ isActive }) =>
+            isActive
+              ? "admin-sidebar__link admin-sidebar__link--active"
+              : "admin-sidebar__link"
+          }
+        >
+          Alumni Content
+        </NavLink>
+
+        <NavLink
           to="/admin/career-stories"
           className={({ isActive }) =>
             isActive

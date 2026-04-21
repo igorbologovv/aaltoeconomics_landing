@@ -1,20 +1,25 @@
-function AlumniSocialSection() {
+import type { SiteContent } from "../../types/siteContent";
+
+type AlumniSocialSectionProps = {
+  content?: SiteContent["alumni"]["socialSection"];
+};
+
+function AlumniSocialSection({ content }: AlumniSocialSectionProps) {
+  if (!content) return null;
+
   return (
     <section className="alumni-social">
       <div className="container alumni-social__inner">
         <div className="alumni-social__text">
-          <p className="section-label">Stay connected</p>
-          <h2>Keep in touch with our alumni community</h2>
-          <p className="alumni-social__intro">
-            Follow our channels to stay updated on alumni news, networking
-            opportunities, community highlights, and upcoming events.
-          </p>
+          <p className="section-label">{content.label}</p>
+          <h2>{content.title}</h2>
+          <p className="alumni-social__intro">{content.intro}</p>
         </div>
 
         <div className="alumni-social__grid">
           <a
             className="alumni-social__item"
-            href="https://t.me/+qbi_I04YhGozNjA0#"
+            href={content.telegramUrl}
             target="_blank"
             rel="noreferrer"
             aria-label="Open Telegram"
@@ -30,7 +35,7 @@ function AlumniSocialSection() {
 
           <a
             className="alumni-social__item"
-            href="https://www.instagram.com/aalto_economics/"
+            href={content.instagramUrl}
             target="_blank"
             rel="noreferrer"
             aria-label="Open Instagram"
@@ -46,7 +51,7 @@ function AlumniSocialSection() {
 
           <a
             className="alumni-social__item"
-            href="https://www.linkedin.com/company/aalto-economics/"
+            href={content.linkedinUrl}
             target="_blank"
             rel="noreferrer"
             aria-label="Open LinkedIn"

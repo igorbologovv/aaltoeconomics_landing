@@ -1,29 +1,43 @@
-function AlumniOpportunitiesSection() {
+import type { SiteContent } from "../../types/siteContent";
+
+type AlumniOpportunitiesSectionProps = {
+  content?: SiteContent["alumni"]["opportunitiesSection"];
+};
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+function AlumniOpportunitiesSection({
+  content,
+}: AlumniOpportunitiesSectionProps) {
+  if (!content) return null;
+
+  const imageSrc = content.image.startsWith("/uploads")
+    ? `${API_URL}${content.image}`
+    : content.image;
+
   return (
     <section className="alumni-opportunities">
       <div className="container alumni-opportunities__grid">
         <div className="alumni-opportunities__text">
-          <p className="section-label">Opportunities</p>
+          <p className="section-label">{content.label}</p>
 
-          <h2>There is something for everyone at Aalto Economics Alumni.</h2>
+          <h2>{content.title}</h2>
 
-          <p className="alumni-opportunities__lead">
-            We’re here to help you connect, learn and grow every step of the
-            way.
-          </p>
+          <p className="alumni-opportunities__lead">{content.lead}</p>
 
           <ul className="alumni-opportunities__points">
-            <li>Stay part of a strong and growing alumni network.</li>
-            <li>Join events, reconnect, and discover new opportunities.</li>
-            <li>Share your experience and support the next generation.</li>
+            {content.points.map((point, index) => (
+              <li key={index}>{point}</li>
+            ))}
           </ul>
         </div>
 
         <div className="alumni-opportunities__image-wrap">
           <img
             className="alumni-opportunities__image"
-            src="/images/alumni/alumni-opportunities.jpg"
-            alt="Aalto Economics alumni community"
+            src={imageSrc}
+            alt={content.imageAlt}
+            loading="lazy"
           />
         </div>
       </div>
