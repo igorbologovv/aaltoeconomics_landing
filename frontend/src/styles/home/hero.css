@@ -9,7 +9,7 @@
 .home-hero__bg {
   position: absolute;
   inset: 0;
-  background: url("/images/home/hero-new.jpg") center center / cover no-repeat;
+  background: url("/images/home/hero-new.webp") center center / cover no-repeat;
   transform: scale(1.03);
   animation: heroDrift 18s ease-in-out infinite alternate;
   will-change: transform;

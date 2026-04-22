@@ -6,7 +6,7 @@ function ForCompaniesHeroSection() {
       <div className="companies-hero__media">
         <img
           className="companies-hero__image"
-          src="/images/for_companies/aaltoecobuilding.jpg"
+          src="/images/for_companies/Skyscrapers.webp"
           alt="Aalto Economics building"
         />
         <div className="companies-hero__overlay" />

@@ -4,8 +4,8 @@
     "slug": "eeva-ahdekivi",
     "name": "Eeva Ahdekivi",
     "role": "Board member of Lasting Enterprises",
-    "image": "/images/career_stories/eeva-aahdekivi.jpg",
-    "text": "My path has combined strategy, leadership, and business development. Aalto Economics gave me a strong foundation for structured thinking and decision-making. Career growth rarely follows a straight line, and that is part of the value of the journey.",
+    "image": "/uploads/contact/e8e622c5-1d53-4011-8886-1029eea16e28.jpg",
+    "text": "I’ve always been drawn to the big picture, which led me to economics. While it doesn’t provide all the answers, it offers a structured way to analyze complex phenomena. University is the perfect time to study broad theories that shape long-term thinking.\n\nI specialize in equity ownership and have worked as an investment director for Finland’s state portfolio, CEO of a family investment office, and an investment banker. Now, I’m a founding partner of a private equity fund, currently in its fundraising phase. After a diverse career managing various ownership structures, I’m excited to explore partnership dynamics.\n\nMy advice: gain experience in economics, markets, and investments. Always ask yourself — what are my strengths, and what’s next? Growth comes from adapting to change, switching roles every 5–7 years to stay relevant. The world evolves quickly, and so should you.\n",
     "order": 2
   },
   {
@@ -13,8 +13,8 @@
     "slug": "kosti-takala",
     "name": "Kosti Takala",
     "role": "Data Scientist / Economist at QuantCo",
-    "image": "/images/career_stories/kosti_takala.jpg",
-    "text": "My work combines economics with data science and practical business problems. The most valuable skill has been learning how to move from theory to implementation. Economics is powerful when paired with technical curiosity and communication.",
+    "image": "/uploads/contact/2a5678e1-413f-4cf9-a2e6-4a3dcb078561.jpg",
+    "text": "I’m from Joutsa, Finland, but have lived in Boston since 2013. I studied economics at Aalto University, minoring in finance and ISM, with additional math studies at the University of Helsinki. During my studies, I worked at VATT and as a research assistant, which led me to pursue a PhD at MIT. After completing my doctorate in 2018, I joined QuantCo, where I work at the intersection of economics, machine learning, and statistics, handling vast datasets and building predictive models.\n\nEconomics provides valuable analytical tools for any profession. I recommend studying beyond economics—coding and machine learning helped me land my current job. Data science remains a promising field, and economists with coding skills are in high demand. Python is the most useful language, with R as another strong option.\n\nCausal inference is a fast-growing area in economics, relevant beyond academia. Mostly Harmless Econometrics (Angrist & Pischke) and Susan Athey’s research are great starting points for exploring this field.",
     "order": 3
   },
   {
@@ -22,8 +22,35 @@
     "slug": "krista-kuuttiniemi",
     "name": "Krista Kuuttiniemi",
     "role": "Doctoral Researcher at Aalto University & Economist at Compass Lexecon",
-    "image": "/uploads/contact/3c813c29-1d4a-4656-b595-b51896dcdda6.jpg",
-    "text": "I started working as an Analyst at Compass Lexecon after graduation, in early 2020. In the past few months, I have worked in multiple cases in the EMEA region (Europe, the Middle East and Africa), mostly in antitrust and competition cases such as mergers. I have enjoyed applying economic theories learned at the university to real-world cases and working with talented individuals in a supportive atmosphere. For economics students, I suggest utilizing the extensive learning opportunities provided by Helsinki GSE and Aalto University. In addition to being active in classes, it is also useful (and fun) to participate in student life and organizations. Most importantly, don’t be afraid to pursue your goals, and do not undervalue yourself.",
+    "image": "/uploads/contact/4476260d-aaa1-4dfa-ba5c-ba2e58043526.jpg",
+    "text": "I started working as an Analyst at Compass Lexecon after graduation, in early 2020. In the past few months, I have worked in multiple cases in the EMEA region (Europe, the Middle East and Africa), mostly in antitrust and competition cases such as mergers. I have enjoyed applying economic theories learned at the university to real-world cases and working with talented individuals in a supportive atmosphere.\n\nFor economics students, I suggest utilizing the extensive learning opportunities provided by Helsinki GSE and Aalto University. In addition to being active in classes, it is also useful (and fun) to participate in student life and organizations. Most importantly, don’t be afraid to pursue your goals, and do not undervalue yourself.",
     "order": 4
+  },
+  {
+    "id": "b6f9eb4a-4810-4e15-b839-48acffa59857",
+    "slug": "juuso-konttila",
+    "name": "Juuso Konttila",
+    "role": "Business Analyst and Service Delivery Manager at CGI",
+    "image": "/uploads/contact/ec13865c-22d2-4962-9b55-5a1f7afa3f4e.jpg",
+    "text": "I started as a Development Manager at Nordea Finance in 2018 after various roles in the financial industry. My position bridges business and IT, requiring both banking and technical knowledge. As an application owner, I oversee multiple systems, ensuring stability, security, compliance, and change management while driving development initiatives and securing funding. An economics degree isn’t required for my role, but it helps in understanding complex systems and causal relationships. It also enhances communication skills, essential for justifying major investments to management.\n\nI encourage students to make the most of Aalto’s opportunities. Serving as Aalto Economics chairman in 2012 was one of my best decisions. Economics opens diverse career paths—you can pursue what truly interests you after graduation.\n",
+    "order": 5
+  },
+  {
+    "id": "fcdb5a30-cc51-437d-8439-2def25e4e5e8",
+    "slug": "joel-leinonen",
+    "name": "Joel Leinonen",
+    "role": "Associate Manager at August Associates",
+    "image": "/uploads/contact/98ed76d0-1284-4980-b168-51d03503156a.jpg",
+    "text": "Joined Copenhagen Economics in fall 2019 after graduating and work in the Helsinki office, though I’ve also spent time in Copenhagen. In the competition economics department, I help clients build strong economic arguments when facing competition authorities. Before CE, I worked at If Insurance in project coordination and data analytics while studying. I also worked as a course assistant for Principles of Economics.\n\nI majored in economics and minored in programming, marketing, finance, and accounting. Courses in econometrics and programming (Python, SQL) were especially useful early in my career, even if I don’t use them daily. Being active in student organizations like KUJ, KY Board, and KY Body of Representatives taught me soft skills and helped me build a valuable network. I encourage students to explore Aalto’s diverse courses. Studying beyond economics can be an advantage for entry-level jobs, as many economics roles require at least a bachelor’s degree.",
+    "order": 6
+  },
+  {
+    "id": "228ca49e-7820-431d-80d0-a54418e4e9b0",
+    "slug": "iikka-korhonen",
+    "name": "Iikka Korhonen",
+    "role": "Head of Research at the Bank of Finland Institute of Emerging Economics",
+    "image": "/uploads/contact/2f780810-3430-45ce-9402-2a79aa6acfa2.jpg",
+    "text": "\nIikka Korhonen\nHead of Research at the Bank of Finland Institute of Emerging Economics\n\nI’m Iikka Korhonen, born in 1969 in Helsinki, where I’ve spent most of my life. I began studying at Helsingin Kauppakorkeakoulu in 1990, earning my master’s in economics in 1994, with minors in finance, formal sciences (math, statistics, data science), and English. My passion for economics led me to complete a PhD in 2008.\n\nCurrently, I’m Head of Research at the Bank of Finland, a privileged place to observe global and national economies. I’ve also worked briefly in Italy, Austria, Japan, and Hong Kong. My economics background has shaped my analytical approach to research.\n\nA piece of advice: theory matters, but so does empirical study. Unique skills — like foreign languages — can set you apart. And strong writing skills are always valuable!\n",
+    "order": 7
   }
 ]

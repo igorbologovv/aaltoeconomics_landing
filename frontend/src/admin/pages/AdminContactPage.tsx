@@ -71,6 +71,12 @@ function AdminContactPage() {
     if (!confirmed) return;
 
     try {
+      const token = localStorage.getItem("adminToken");
+
+      if (!token) {
+        throw new Error("Admin token is missing. Please log in again.");
+      }
+
       const isUnsavedNewPerson = !people.some(
         (person) => person.id === selectedPerson.id && person.name && person.email
       );
@@ -80,11 +86,24 @@ function AdminContactPage() {
           `${API_URL}/api/admin/contact-people/${selectedPerson.id}`,
           {
             method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
 
         if (!response.ok) {
-          throw new Error("Delete failed");
+          const rawText = await response.text();
+          let message = "Delete failed";
+
+          try {
+            const data = rawText ? JSON.parse(rawText) : null;
+            message = data?.message || data?.error || message;
+          } catch {
+            if (rawText) message = rawText;
+          }
+
+          throw new Error(message);
         }
       }
 
@@ -93,28 +112,45 @@ function AdminContactPage() {
       setSelectedId(nextPeople[0]?.id ?? "");
     } catch (error) {
       console.error("Delete failed:", error);
-      window.alert("Delete failed ❌");
+      window.alert(error instanceof Error ? error.message : "Delete failed ❌");
     }
   };
 
   const handleSave = async () => {
     try {
+      const token = localStorage.getItem("adminToken");
+
+      if (!token) {
+        throw new Error("Admin token is missing. Please log in again.");
+      }
+
       const response = await fetch(`${API_URL}/api/admin/contact-people`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(people),
       });
 
       if (!response.ok) {
-        throw new Error("Save failed");
+        const rawText = await response.text();
+        let message = "Save failed";
+
+        try {
+          const data = rawText ? JSON.parse(rawText) : null;
+          message = data?.message || data?.error || message;
+        } catch {
+          if (rawText) message = rawText;
+        }
+
+        throw new Error(message);
       }
 
       window.alert("Saved to backend ✅");
     } catch (error) {
       console.error("Save failed:", error);
-      window.alert("Save failed ❌");
+      window.alert(error instanceof Error ? error.message : "Save failed ❌");
     }
   };
 

@@ -20,16 +20,35 @@ function AdminContactEditorSection({
 }: AdminContactEditorSectionProps) {
   const handleImageUpload = async (file: File) => {
     try {
+      const token = localStorage.getItem("adminToken");
+
+      if (!token) {
+        throw new Error("Admin token is missing. Please log in again.");
+      }
+
       const formData = new FormData();
       formData.append("file", file);
 
       const res = await fetch(`${API_URL}/api/admin/upload`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: formData,
       });
 
       if (!res.ok) {
-        throw new Error("Upload failed");
+        const rawText = await res.text();
+        let message = "Upload failed";
+
+        try {
+          const data = rawText ? JSON.parse(rawText) : null;
+          message = data?.message || data?.error || message;
+        } catch {
+          if (rawText) message = rawText;
+        }
+
+        throw new Error(message);
       }
 
       const data = await res.json();
@@ -37,7 +56,7 @@ function AdminContactEditorSection({
       onUpdateField("image", data.url);
     } catch (err) {
       console.error("Upload failed", err);
-      alert("Upload failed ❌");
+      alert(err instanceof Error ? err.message : "Upload failed ❌");
     }
   };
 
