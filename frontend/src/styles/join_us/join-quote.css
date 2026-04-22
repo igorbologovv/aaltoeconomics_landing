@@ -51,8 +51,6 @@
 }
 
 .join-quote__image-wrap {
-  position: relative;
-  overflow: hidden;
   width: 100%;
   max-width: 420px;
   justify-self: end;
@@ -63,18 +61,11 @@
 }
 
 .join-quote__image {
-  display: block;
   width: 100%;
   height: 560px;
   object-fit: cover;
   object-position: center top;
   border-radius: 28px;
-  transition: transform 0.45s ease;
-  transform: scale(1);
-}
-
-.join-quote__image-wrap:hover .join-quote__image {
-  transform: scale(1.045);
 }
 
 @media (max-width: 980px) {

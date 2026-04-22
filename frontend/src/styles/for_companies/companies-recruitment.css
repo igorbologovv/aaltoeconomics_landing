@@ -116,4 +116,10 @@
   .companies-recruitment__image-wrap:hover .companies-recruitment__image {
     transform: none;
   }
+  .companies-recruitment__text,
+.companies-recruitment__image-wrap,
+.companies-results__text,
+.companies-results__image-wrap {
+  min-width: 0;
+}
 }

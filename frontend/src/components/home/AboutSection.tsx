@@ -15,23 +15,23 @@ function AboutSection({ content }: AboutSectionProps) {
     : content.image;
 
   return (
-    <section className="about-section">
-      <div className="container about-section__grid">
-        <div className="about-section__text">
+    <section className="about-section section-shell section-shell--light">
+      <div className="container split-layout split-layout--media-wide about-section__grid">
+        <div className="about-section__text section-copy section-copy--wide">
           <p className="section-label">{content.label}</p>
           <h2>{content.title}</h2>
 
           <p>{content.paragraphOne}</p>
           <p>{content.paragraphTwo}</p>
 
-          <div className="about-section__button-row">
+          <div className="about-section__button-row button-row button-row--center">
             <Link to={content.buttonHref} className="primary-btn">
               {content.buttonText}
             </Link>
           </div>
         </div>
 
-        <div className="about-section__image-wrap">
+        <div className="about-section__image-wrap media-card media-card--strong media-card--zoom">
           <img
             className="about-section__image"
             src={imageSrc}

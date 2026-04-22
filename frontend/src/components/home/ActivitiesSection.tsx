@@ -14,9 +14,9 @@ function ActivitiesSection({ content }: ActivitiesSectionProps) {
     : content.image;
 
   return (
-    <section className="activities-section">
-      <div className="container activities-section__grid">
-        <div className="activities-section__image-wrap">
+    <section className="activities-section section-shell section-shell--soft">
+      <div className="container split-layout split-layout--media-wide activities-section__grid">
+        <div className="activities-section__image-wrap media-card">
           <img
             className="activities-section__image"
             src={imageSrc}
@@ -25,7 +25,7 @@ function ActivitiesSection({ content }: ActivitiesSectionProps) {
           />
         </div>
 
-        <div className="activities-section__text">
+        <div className="activities-section__text section-copy">
           <p className="section-label">{content.label}</p>
           <h2>{content.title}</h2>
 

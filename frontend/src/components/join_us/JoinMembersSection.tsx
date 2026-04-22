@@ -15,22 +15,22 @@ function JoinMembersSection({ content }: JoinMembersSectionProps) {
     : content.image;
 
   return (
-    <section className="join-members">
-      <div className="container join-members__grid">
-        <div className="join-members__text">
+    <section className="join-members section-shell section-shell--soft">
+      <div className="container split-layout split-layout--media-wide join-members__grid">
+        <div className="join-members__text section-copy section-copy--wide">
           <p className="section-label">{content.label}</p>
           <h2>{content.title}</h2>
 
           <p>{content.paragraph}</p>
 
-          <div className="join-members__button-row">
+          <div className="join-members__button-row button-row button-row--start">
             <Link to={content.buttonHref} className="primary-btn">
               {content.buttonText}
             </Link>
           </div>
         </div>
 
-        <div className="join-members__image-wrap">
+        <div className="join-members__image-wrap media-card media-card--strong media-card--zoom">
           <img
             className="join-members__image"
             src={imageSrc}

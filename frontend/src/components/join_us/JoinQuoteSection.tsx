@@ -21,14 +21,12 @@ function JoinQuoteSection({ content }: JoinQuoteSectionProps) {
             “
           </div>
 
-          <blockquote className="join-quote__text">
-            {content.quote}
-          </blockquote>
+          <blockquote className="join-quote__text">{content.quote}</blockquote>
 
           <p className="join-quote__author">{content.author}</p>
         </div>
 
-        <div className="join-quote__image-wrap">
+        <div className="join-quote__image-wrap media-card media-card--strong media-card--zoom">
           <img
             className="join-quote__image"
             src={imageSrc}

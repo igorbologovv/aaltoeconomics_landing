@@ -23,16 +23,16 @@ function JoinEventsSection({ content }: JoinEventsSectionProps) {
     : content.imageSmallBottom;
 
   return (
-    <section className="join-events">
-      <div className="container join-events__grid">
-        <div className="join-events__text">
+    <section className="join-events section-shell">
+      <div className="container split-layout split-layout--media-wide join-events__grid">
+        <div className="join-events__text section-copy section-copy--wide">
           <p className="section-label">{content.label}</p>
           <h2>{content.title}</h2>
 
           <p>{content.paragraphOne}</p>
           <p>{content.paragraphTwo}</p>
 
-          <div className="join-events__button-row">
+          <div className="join-events__button-row button-row button-row--start">
             <Link to={content.buttonHref} className="primary-btn">
               {content.buttonText}
             </Link>
@@ -40,7 +40,7 @@ function JoinEventsSection({ content }: JoinEventsSectionProps) {
         </div>
 
         <div className="join-events__mosaic">
-          <div className="join-events__image-card join-events__image-card--small-top">
+          <div className="join-events__image-card join-events__image-card--small-top media-card media-card--strong">
             <img
               className="join-events__image"
               src={imageSmallTop}
@@ -49,7 +49,7 @@ function JoinEventsSection({ content }: JoinEventsSectionProps) {
             />
           </div>
 
-          <div className="join-events__image-card join-events__image-card--large">
+          <div className="join-events__image-card join-events__image-card--large media-card media-card--strong">
             <img
               className="join-events__image"
               src={imageLarge}
@@ -58,7 +58,7 @@ function JoinEventsSection({ content }: JoinEventsSectionProps) {
             />
           </div>
 
-          <div className="join-events__image-card join-events__image-card--small-bottom">
+          <div className="join-events__image-card join-events__image-card--small-bottom media-card media-card--strong">
             <img
               className="join-events__image"
               src={imageSmallBottom}

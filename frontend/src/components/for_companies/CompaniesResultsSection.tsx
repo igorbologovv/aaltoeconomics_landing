@@ -1,43 +1,65 @@
 import { Link } from "react-router-dom";
+import type { SiteContent } from "../../types/siteContent";
 
-function CompaniesResultsSection() {
+type CompaniesResultsSectionProps = {
+  content?: SiteContent["forCompanies"]["resultsSection"];
+};
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+function CompaniesResultsSection({ content }: CompaniesResultsSectionProps) {
+  if (!content) return null;
+
+  const imageSrc = content.image.startsWith("/uploads")
+    ? `${API_URL}${content.image}`
+    : content.image;
+
+  const isExternalLink =
+    content.buttonHref.startsWith("http://") ||
+    content.buttonHref.startsWith("https://") ||
+    content.buttonHref.startsWith("mailto:") ||
+    content.buttonHref.startsWith("tel:");
+
   return (
     <section className="companies-results">
       <div className="container companies-results__grid">
         <div className="companies-results__image-wrap">
           <img
             className="companies-results__image"
-            src="/images/for_companies/aalto1.jpg"
-            alt="Aalto University School of Business interior"
+            src={imageSrc}
+            alt={content.imageAlt}
+            loading="lazy"
           />
         </div>
 
         <div className="companies-results__text">
-          <p className="section-label">Visibility</p>
+          <p className="section-label">{content.label}</p>
 
-          <h2>Get the best results!</h2>
+          <h2>{content.title}</h2>
 
-          <p>
-            Aalto Economics is the most effective way to reach economics’
-            students in Aalto University School of Business. Through our
-            targeted channels, you can reach hundreds of our students.
-          </p>
-
-          <p>
-            For example, through our mailing list, we send job advertisements as
-            well as event notifications. We also provide visibility on other
-            channels, for example our Instagram page and website.
-          </p>
+          <p>{content.paragraphOne}</p>
+          <p>{content.paragraphTwo}</p>
 
           <p className="companies-results__contact">
-            Feel free to contact us at{" "}
-            <a href="mailto:aaltoeconomics@ky.fi">aaltoeconomics@ky.fi</a>
+            {content.contactText}{" "}
+            <a href={`mailto:${content.contactEmail}`}>{content.contactEmail}</a>
           </p>
 
           <div className="companies-results__actions">
-            <Link to="/contact" className="primary-btn">
-              Work With Us
-            </Link>
+            {isExternalLink ? (
+              <a
+                href={content.buttonHref}
+                className="primary-btn"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {content.buttonText}
+              </a>
+            ) : (
+              <Link to={content.buttonHref} className="primary-btn">
+                {content.buttonText}
+              </Link>
+            )}
           </div>
         </div>
       </div>

@@ -22,6 +22,7 @@ import AdminMembershipApplicationsPage from "./admin/pages/AdminMembershipApplic
 import AdminHomeContentPage from "./admin/pages/AdminHomeContentPage";
 import AdminJoinUsContentPage from "./admin/pages/AdminJoinUsContentPage";
 import AdminAlumniContentPage from "./admin/pages/AdminAlumniContentPage";
+import AdminForCompaniesContentPage from "./admin/pages/AdminForCompaniesContentPage";
 
 function App() {
   return (
@@ -52,6 +53,10 @@ function App() {
         <Route path="home-content" element={<AdminHomeContentPage />} />
         <Route path="join-us-content" element={<AdminJoinUsContentPage />} />
         <Route path="alumni-content" element={<AdminAlumniContentPage />} />
+        <Route
+          path="for-companies-content"
+          element={<AdminForCompaniesContentPage />}
+        />
         <Route path="career-stories" element={<AdminCareerStoriesPage />} />
         <Route path="contact-people" element={<AdminContactPage />} />
         <Route path="open-positions" element={<AdminOpenPositionsPage />} />

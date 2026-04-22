@@ -1,52 +1,19 @@
 .join-networking {
-  padding: 96px 0 112px;
   background: #f2eee7;
-}
-.join-networking__grid {
-  display: grid;
-  grid-template-columns: 1.06fr 1fr;
-  gap: 84px;
-  align-items: center;
-}
-
-.join-networking__text {
-  max-width: 680px;
-}
-
-.join-networking__text h2 {
-  margin: 0 0 20px;
-  color: #032455;
-  font-family: "The Seasons", Georgia, "Times New Roman", serif;
-  font-size: clamp(2.8rem, 5vw, 4.4rem);
-  line-height: 0.96;
-  letter-spacing: -0.045em;
-  font-weight: 600;
 }
 
 .join-networking__lead {
   margin: 0 0 20px;
   max-width: 640px;
-  font-size: 1.1rem;
+  font-size: var(--text-body-lg);
   line-height: 1.76;
-  color: #495d77;
-  font-style: normal;
+  color: var(--color-body);
 }
 
-.join-networking__text p:last-of-type {
-  margin: 0;
-  max-width: 640px;
-  font-size: 1.1rem;
-  line-height: 1.76;
-  color: #495d77;
-}
-
-.join-networking__image-wrap {
-  position: relative;
-  overflow: hidden;
-  border-radius: 34px;
-  box-shadow:
-    0 18px 40px rgba(3, 36, 85, 0.08),
-    0 30px 70px rgba(8, 22, 48, 0.10);
+.join-networking__image {
+  max-height: 640px;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .join-networking__image-wrap::before {
@@ -54,7 +21,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  border-radius: 34px;
+  border-radius: var(--radius-card);
   pointer-events: none;
   background: linear-gradient(
     180deg,
@@ -64,32 +31,7 @@
   );
 }
 
-.join-networking__image {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 640px;
-  object-fit: cover;
-  object-position: center center;
-  border-radius: 34px;
-  transition: transform 0.45s ease;
-  transform: scale(1);
-}
-
-.join-networking__image-wrap:hover .join-networking__image {
-  transform: scale(1.045);
-}
-
 @media (max-width: 980px) {
-  .join-networking {
-    padding: 88px 0 96px;
-  }
-
-  .join-networking__grid {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
-
   .join-networking__text {
     max-width: 100%;
   }
@@ -100,19 +42,7 @@
 }
 
 @media (max-width: 640px) {
-  .join-networking {
-    padding: 72px 0 88px;
-  }
-
-  .join-networking__text h2 {
-    font-size: clamp(2.3rem, 10vw, 3.3rem);
-  }
-
   .join-networking__image {
     max-height: 420px;
-  }
-
-  .join-networking__image-wrap:hover .join-networking__image {
-    transform: none;
   }
 }

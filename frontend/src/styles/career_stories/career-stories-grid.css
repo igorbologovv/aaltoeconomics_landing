@@ -93,12 +93,11 @@
   transform: scale(1.045);
 }
 
-/* Share block*/
+/* Share block */
 
 .career-grid-section__share {
   margin-top: 48px;
 }
-
 
 .career-share-block {
   display: grid;
@@ -106,8 +105,6 @@
   align-items: center;
   gap: 48px;
 }
-
-
 
 .career-share-block__image-wrap {
   position: relative;
@@ -131,7 +128,6 @@
   transform: scale(1.04);
 }
 
-
 .career-share-block__text {
   max-width: 420px;
 }
@@ -153,15 +149,22 @@
   line-height: 1.8;
 }
 
-
-
 .career-share-block .primary-btn {
   padding: 16px 34px;
   border-radius: 999px;
 }
 
-
 @media (max-width: 1100px) {
+  .career-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .career-story-card,
+  .career-story-card--large,
+  .career-story-card--wide {
+    min-height: 460px;
+  }
+
   .career-share-block {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -177,6 +180,40 @@
 }
 
 @media (max-width: 640px) {
+  .career-grid-section {
+    padding: 28px 0 84px;
+  }
+
+  .career-grid {
+    gap: 20px;
+  }
+
+  .career-story-card,
+  .career-story-card--large,
+  .career-story-card--wide {
+    min-height: 380px;
+    border-radius: 24px;
+  }
+
+  .career-story-card__content {
+    padding: 22px 20px;
+  }
+
+  .career-story-card__name {
+    font-size: 1.75rem;
+    line-height: 1.02;
+  }
+
+  .career-story-card__role {
+    margin: 0 0 14px;
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  .career-story-card__cta {
+    font-size: 0.92rem;
+  }
+
   .career-share-block__image-wrap {
     height: 220px;
     border-radius: 24px;

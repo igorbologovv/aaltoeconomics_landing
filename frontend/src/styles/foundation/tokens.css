@@ -1,0 +1,59 @@
+:root {
+  --color-primary: #032455;
+  --color-primary-hover: #0b2f66;
+
+  --color-bg: #f1f3f6;
+  --color-bg-soft: #eceff4;
+  --color-bg-warm: #f5f6f8;
+
+  --color-text: #1c2433;
+  --color-text-soft: #5c6778;
+  --color-body: #495d77;
+
+  --color-white: #ffffff;
+
+  --container-max: 1200px;
+  --container-gutter: 40px;
+
+  --section-space-xl: 112px;
+  --section-space-lg: 96px;
+  --section-space-md: 88px;
+  --section-space-sm: 72px;
+
+  --grid-gap-xl: 84px;
+  --grid-gap-lg: 64px;
+  --grid-gap-md: 44px;
+  --grid-gap-sm: 36px;
+
+  --heading-color: #032455;
+  --heading-display-xl: clamp(2.8rem, 5vw, 4.4rem);
+  --heading-display-lg: clamp(2.4rem, 5vw, 4rem);
+  --heading-display-md: clamp(2.3rem, 10vw, 3.3rem);
+
+  --text-body-lg: 1.1rem;
+  --text-body-md: 1.08rem;
+  --text-body-sm: 1rem;
+
+  --radius-pill: 999px;
+  --radius-card: 34px;
+  --radius-card-sm: 28px;
+  --radius-xl: 36px;
+
+  --shadow-card: 0 18px 40px rgba(3, 36, 85, 0.08);
+  --shadow-card-strong:
+    0 18px 40px rgba(3, 36, 85, 0.08),
+    0 30px 70px rgba(8, 22, 48, 0.10);
+
+  --btn-height: 54px;
+  --btn-padding-x: 28px;
+  --btn-font-size: 1rem;
+  --btn-font-weight: 600;
+
+  --btn-shadow-primary: 0 14px 28px rgba(3, 36, 85, 0.14);
+  --btn-shadow-primary-hover: 0 18px 34px rgba(3, 36, 85, 0.2);
+
+  --btn-shadow-light: 0 14px 28px rgba(0, 0, 0, 0.14);
+  --btn-shadow-light-hover: 0 18px 34px rgba(0, 0, 0, 0.18);
+
+  --transition-fast: 0.22s ease;
+}

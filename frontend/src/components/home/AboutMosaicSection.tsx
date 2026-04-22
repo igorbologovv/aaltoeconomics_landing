@@ -23,8 +23,8 @@ function AboutMosaicSection({ content }: AboutMosaicSectionProps) {
     : content.imageSmallBottom;
 
   return (
-    <section className="about-mosaic">
-      <div className="container about-mosaic__grid">
+    <section className="about-mosaic section-shell section-shell--warm">
+      <div className="container split-layout split-layout--text-wide about-mosaic__grid">
         <div className="about-mosaic__images">
           <img
             className="about-mosaic__img about-mosaic__img--small-top"
@@ -46,7 +46,7 @@ function AboutMosaicSection({ content }: AboutMosaicSectionProps) {
           />
         </div>
 
-        <div className="about-mosaic__text">
+        <div className="about-mosaic__text section-copy section-copy--narrow">
           <p className="section-label">{content.label}</p>
           <h2>{content.title}</h2>
 
@@ -56,7 +56,7 @@ function AboutMosaicSection({ content }: AboutMosaicSectionProps) {
             ))}
           </ul>
 
-          <div className="about-mosaic__button-row">
+          <div className="about-mosaic__button-row button-row button-row--start">
             <Link to={content.buttonHref} className="primary-btn">
               {content.buttonText}
             </Link>

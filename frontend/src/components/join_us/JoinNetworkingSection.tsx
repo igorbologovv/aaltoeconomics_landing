@@ -14,9 +14,9 @@ function JoinNetworkingSection({ content }: JoinNetworkingSectionProps) {
     : content.image;
 
   return (
-    <section className="join-networking">
-      <div className="container join-networking__grid">
-        <div className="join-networking__image-wrap">
+    <section className="join-networking section-shell">
+      <div className="container split-layout split-layout--media-wide join-networking__grid">
+        <div className="join-networking__image-wrap media-card media-card--strong media-card--zoom">
           <img
             className="join-networking__image"
             src={imageSrc}
@@ -25,7 +25,7 @@ function JoinNetworkingSection({ content }: JoinNetworkingSectionProps) {
           />
         </div>
 
-        <div className="join-networking__text">
+        <div className="join-networking__text section-copy section-copy--wide">
           <p className="section-label">{content.label}</p>
           <h2>{content.title}</h2>
           <p className="join-networking__lead">{content.lead}</p>
