@@ -14,7 +14,7 @@ function JoinQuoteSection({ content }: JoinQuoteSectionProps) {
     : content.image;
 
   return (
-    <section className="join-quote">
+    <section className="join-quote surface-brand">
       <div className="container join-quote__grid">
         <div className="join-quote__text-wrap">
           <div className="join-quote__icon" aria-hidden="true">

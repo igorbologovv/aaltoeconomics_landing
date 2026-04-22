@@ -1,21 +1,5 @@
-.home-cta {
-  background: linear-gradient(
-    180deg,
-    #8f9eb6 0%,
-    #7f90ab 48%,
-    #6f829f 100%
-  );
-  position: relative;
-}
-
 .home-cta__overlay {
-  position: relative;
   width: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(3, 36, 85, 0.16) 0%,
-    rgba(3, 36, 85, 0.3) 100%
-  );
 }
 
 .home-cta__content {

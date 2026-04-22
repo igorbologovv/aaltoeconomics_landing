@@ -42,6 +42,7 @@ export type SiteContent = {
       secondaryButtonHref: string;
     };
   };
+
   joinUs: {
     membersSection: {
       label: string;
@@ -81,6 +82,7 @@ export type SiteContent = {
       imageAlt: string;
     };
   };
+
   alumni: {
     socialSection: {
       label: string;
@@ -99,26 +101,36 @@ export type SiteContent = {
       imageAlt: string;
     };
   };
+
+  careerStories: {
+    shareSection: {
+      title: string;
+      paragraph: string;
+      buttonText: string;
+      buttonHref: string;
+    };
+  };
+
   forCompanies: {
-  recruitmentSection: {
-    label: string;
-    title: string;
-    paragraphOne: string;
-    paragraphTwo: string;
-    image: string;
-    imageAlt: string;
+    recruitmentSection: {
+      label: string;
+      title: string;
+      paragraphOne: string;
+      paragraphTwo: string;
+      image: string;
+      imageAlt: string;
+    };
+    resultsSection: {
+      label: string;
+      title: string;
+      paragraphOne: string;
+      paragraphTwo: string;
+      contactText: string;
+      contactEmail: string;
+      buttonText: string;
+      buttonHref: string;
+      image: string;
+      imageAlt: string;
+    };
   };
-  resultsSection: {
-    label: string;
-    title: string;
-    paragraphOne: string;
-    paragraphTwo: string;
-    contactText: string;
-    contactEmail: string;
-    buttonText: string;
-    buttonHref: string;
-    image: string;
-    imageAlt: string;
-  };
-};
 };

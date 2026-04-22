@@ -9,7 +9,7 @@ function CTASection({ content }: CTASectionProps) {
   if (!content) return null;
 
   return (
-    <section className="home-cta">
+    <section className="home-cta surface-brand">
       <div className="home-cta__overlay">
         <div className="container home-cta__content section-copy section-copy--light section-copy--center">
           <p className="section-label light">{content.label}</p>

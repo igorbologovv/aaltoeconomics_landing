@@ -107,26 +107,34 @@
       "imageAlt": "Aalto Economics alumni community"
     }
   },
-  "forCompanies": {
-  "recruitmentSection": {
-    "label": "Recruitment",
-    "title": "Looking for new employees?",
-    "paragraphOne": "Aalto Economics represents economics students at Aalto University School of Business. Aalto Economics takes care of economics-minded students’ interests, well-being and future career paths.",
-    "paragraphTwo": "Aalto Economics arranges excursions, career events and informal events with different companies. Career Starter is the largest career night within KY’s subject clubs and is arranged every fall. We are also happy to arrange new kinds of events together with companies.",
-    "image": "/images/for_companies/aalto2.jpg",
-    "imageAlt": "Aalto University School of Business interior"
+  "careerStories": {
+    "shareSection": {
+      "title": "Share Your Story",
+      "paragraph": "Have a story to share with us? Whether you are a student, faculty member, or alumni, we would love to hear your journey and inspire others.",
+      "buttonText": "Share now",
+      "buttonHref": "/contact"
+    }
   },
-  "resultsSection": {
-    "label": "Visibility",
-    "title": "Get the best results!",
-    "paragraphOne": "Aalto Economics is the most effective way to reach economics’ students in Aalto University School of Business. Through our targeted channels, you can reach hundreds of our students.",
-    "paragraphTwo": "For example, through our mailing list, we send job advertisements as well as event notifications. We also provide visibility on other channels, for example our Instagram page and website.",
-    "contactText": "Feel free to contact us at",
-    "contactEmail": "aaltoeconomics@ky.fi",
-    "buttonText": "Work With Us",
-    "buttonHref": "/contact",
-    "image": "/images/for_companies/aalto1.jpg",
-    "imageAlt": "Aalto University School of Business interior"
+  "forCompanies": {
+    "recruitmentSection": {
+      "label": "Recruitment",
+      "title": "Looking for new employees?",
+      "paragraphOne": "Aalto Economics represents economics students at Aalto University School of Business. Aalto Economics takes care of economics-minded students’ interests, well-being and future career paths.",
+      "paragraphTwo": "Aalto Economics arranges excursions, career events and informal events with different companies. Career Starter is the largest career night within KY’s subject clubs and is arranged every fall. We are also happy to arrange new kinds of events together with companies.",
+      "image": "/images/for_companies/aalto2.jpg",
+      "imageAlt": "Aalto University School of Business interior"
+    },
+    "resultsSection": {
+      "label": "Visibility",
+      "title": "Get the best results!",
+      "paragraphOne": "Aalto Economics is the most effective way to reach economics’ students in Aalto University School of Business. Through our targeted channels, you can reach hundreds of our students.",
+      "paragraphTwo": "For example, through our mailing list, we send job advertisements as well as event notifications. We also provide visibility on other channels, for example our Instagram page and website.",
+      "contactText": "Feel free to contact us at",
+      "contactEmail": "aaltoeconomics@ky.fi",
+      "buttonText": "Work With Us",
+      "buttonHref": "/contact",
+      "image": "/images/for_companies/aalto1.jpg",
+      "imageAlt": "Aalto University School of Business interior"
+    }
   }
-}
 }

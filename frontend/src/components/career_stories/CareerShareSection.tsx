@@ -1,16 +1,25 @@
-function CareerShareSection() {
+import { Link } from "react-router-dom";
+import type { SiteContent } from "../../types/siteContent";
+
+type CareerShareSectionProps = {
+  content?: SiteContent["careerStories"]["shareSection"];
+};
+
+function CareerShareSection({ content }: CareerShareSectionProps) {
+  if (!content) return null;
+
   return (
-    <section className="career-share-section">
-      <div className="container career-share-section__content">
-        <h2>Share Your Story</h2>
+    <section className="career-share-section surface-brand">
+      <div className="container career-share-section__content section-copy section-copy--light section-copy--center">
+        <h2>{content.title}</h2>
 
-        <p>
-          Have a story to share with us? Whether you are a student, faculty
-          member, or alumni, we would love to hear your journey and inspire
-          others.
-        </p>
+        <p>{content.paragraph}</p>
 
-        <button className="primary-btn">Share now</button>
+        <div className="career-share-section__actions button-row button-row--center">
+          <Link to={content.buttonHref} className="primary-btn">
+            {content.buttonText}
+          </Link>
+        </div>
       </div>
     </section>
   );

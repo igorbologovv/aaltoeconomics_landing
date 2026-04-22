@@ -1,51 +1,33 @@
-.career-share-section {
-  padding: 120px 0;
-  background: linear-gradient(
-    180deg,
-    #8f9eb6 0%,
-    #7f90ab 48%,
-    #6f829f 100%
-  );
-  text-align: center;
-}
-
 .career-share-section__content {
   max-width: 720px;
-  margin: 0 auto;
-  color: #fff;
+  padding: 120px 0;
 }
 
-.career-share-section h2 {
-  margin: 0 0 24px;
-  font-family: "The Seasons", Georgia, serif;
+.career-share-section__content h2 {
   font-size: clamp(2.6rem, 4vw, 3.8rem);
   line-height: 1;
   letter-spacing: -0.04em;
-  font-weight: 600;
 }
 
-.career-share-section p {
-  margin: 0 auto 32px;
-  font-size: 1.1rem;
+.career-share-section__content p {
+  margin-bottom: 32px;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.9);
 }
 
-.career-share-section .primary-btn {
+.career-share-section__actions .primary-btn {
   padding: 16px 40px;
-  border-radius: 999px;
 }
 
 @media (max-width: 640px) {
-  .career-share-section {
+  .career-share-section__content {
     padding: 88px 0;
   }
 
-  .career-share-section h2 {
+  .career-share-section__content h2 {
     font-size: clamp(2rem, 8vw, 2.8rem);
   }
 
-  .career-share-section p {
+  .career-share-section__content p {
     font-size: 1rem;
   }
 }

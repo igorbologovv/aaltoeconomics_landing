@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { CareerStory } from "../types/careerStories";
+import type { SiteContent } from "../types/siteContent";
 
 import CareerStoriesHeroSection from "../components/career_stories/CareerStoriesHeroSection";
 import CareerStoriesIntroSection from "../components/career_stories/CareerStoriesIntroSection";
@@ -15,27 +16,38 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 function CareerStoriesPage() {
   const [stories, setStories] = useState<CareerStory[]>([]);
+  const [siteContent, setSiteContent] = useState<SiteContent | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const loadStories = async () => {
+    const loadPageData = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/career-stories`);
+        const [storiesResponse, siteContentResponse] = await Promise.all([
+          fetch(`${API_URL}/api/career-stories`),
+          fetch(`${API_URL}/api/site-content`),
+        ]);
 
-        if (!response.ok) {
+        if (!storiesResponse.ok) {
           throw new Error("Failed to load career stories");
         }
 
-        const data = (await response.json()) as CareerStory[];
-        setStories(data);
+        if (!siteContentResponse.ok) {
+          throw new Error("Failed to load site content");
+        }
+
+        const storiesData = (await storiesResponse.json()) as CareerStory[];
+        const siteContentData = (await siteContentResponse.json()) as SiteContent;
+
+        setStories(storiesData);
+        setSiteContent(siteContentData);
       } catch (error) {
-        console.error("Failed to load career stories:", error);
+        console.error("Failed to load career stories page data:", error);
       } finally {
         setIsLoading(false);
       }
     };
 
-    void loadStories();
+    void loadPageData();
   }, []);
 
   return (
@@ -43,7 +55,7 @@ function CareerStoriesPage() {
       <CareerStoriesHeroSection />
       <CareerStoriesIntroSection />
       <CareerStoriesGridSection stories={stories} isLoading={isLoading} />
-      <CareerShareSection />
+      <CareerShareSection content={siteContent?.careerStories.shareSection} />
     </>
   );
 }

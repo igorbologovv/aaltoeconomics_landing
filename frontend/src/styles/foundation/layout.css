@@ -82,6 +82,23 @@
   }
 }
 
+.surface-brand {
+  position: relative;
+  background: var(--gradient-brand-surface);
+}
+
+.surface-brand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-brand-surface-overlay);
+  pointer-events: none;
+}
+
+.surface-brand > * {
+  position: relative;
+  z-index: 1;
+}
 @media (max-width: 640px) {
   .section-shell {
     padding: var(--section-space-md) 0;

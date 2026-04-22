@@ -56,4 +56,17 @@
   --btn-shadow-light-hover: 0 18px 34px rgba(0, 0, 0, 0.18);
 
   --transition-fast: 0.22s ease;
+
+    --gradient-brand-surface: linear-gradient(
+    180deg,
+    #8f9eb6 0%,
+    #7f90ab 48%,
+    #6f829f 100%
+  );
+
+  --gradient-brand-surface-overlay: linear-gradient(
+    180deg,
+    rgba(3, 36, 85, 0.16) 0%,
+    rgba(3, 36, 85, 0.3) 100%
+  );
 }

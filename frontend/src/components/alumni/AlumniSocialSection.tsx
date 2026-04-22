@@ -8,9 +8,9 @@ function AlumniSocialSection({ content }: AlumniSocialSectionProps) {
   if (!content) return null;
 
   return (
-    <section className="alumni-social">
+    <section className="alumni-social section-shell section-shell--soft">
       <div className="container alumni-social__inner">
-        <div className="alumni-social__text">
+        <div className="alumni-social__text section-copy">
           <p className="section-label">{content.label}</p>
           <h2>{content.title}</h2>
           <p className="alumni-social__intro">{content.intro}</p>
