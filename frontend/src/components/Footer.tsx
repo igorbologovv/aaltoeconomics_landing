@@ -1,6 +1,58 @@
+import { useEffect, useMemo, useState } from "react";
+import type { FooterPartner, FooterPartnerRow } from "../types/footerPartner";
 import "../styles/components/footer.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+function getImageSrc(src: string) {
+  if (!src) return "";
+
+  if (src.startsWith("/uploads")) {
+    return `${API_URL}${src}`;
+  }
+
+  return src;
+}
+
 function Footer() {
+  const [partners, setPartners] = useState<FooterPartner[]>([]);
+
+  useEffect(() => {
+    async function loadPartners() {
+      try {
+        const response = await fetch(`${API_URL}/api/footer-partners`);
+
+        if (!response.ok) {
+          throw new Error("Failed to load footer partners");
+        }
+
+        const data = (await response.json()) as FooterPartner[];
+        setPartners(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    loadPartners();
+  }, []);
+
+  const partnersByRow = useMemo(() => {
+    const rows: Record<FooterPartnerRow, FooterPartner[]> = {
+      1: [],
+      2: [],
+      3: [],
+    };
+
+    partners
+      .filter((partner) => partner.isVisible)
+      .sort((a, b) => a.row - b.row || a.order - b.order)
+      .forEach((partner) => {
+        rows[partner.row].push(partner);
+      });
+
+    return rows;
+  }, [partners]);
+
   return (
     <footer className="site-footer">
       <div className="container footer">
@@ -26,160 +78,41 @@ function Footer() {
         <div className="footer__partners">
           <h3 className="footer__title">Aalto Economics Partners</h3>
 
-          <div className="footer__logos footer__logos--desktop">
-            <div className="footer__logos-row footer__logos-row--desktop-top">
-              <a
-                className="footer__partner footer__partner--bcg"
-                href="https://www.bcg.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="BCG"
-              >
-                <img
-                  src="/images/partners/bcg.png"
-                  alt="BCG"
-                  className="footer__logo-image"
-                />
-              </a>
+          <div className="footer__logos">
+            {([1, 2, 3] as FooterPartnerRow[]).map((row) => {
+              const rowPartners = partnersByRow[row];
 
-              <a
-                className="footer__partner footer__partner--evli"
-                href="https://www.evli.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Evli"
-              >
-                <img
-                  src="/images/partners/evli.png"
-                  alt="EVLI"
-                  className="footer__logo-image"
-                />
-              </a>
+              if (rowPartners.length === 0) return null;
 
-              <a
-                className="footer__partner footer__partner--august"
-                href="https://august.fi/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="August"
-              >
-                <img
-                  src="/images/partners/august.png"
-                  alt="August"
-                  className="footer__logo-image"
-                />
-              </a>
-            </div>
-
-            <div className="footer__logos-row footer__logos-row--desktop-middle">
-              <a
-                className="footer__partner footer__partner--bearingpoint"
-                href="https://www.bearingpoint.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="BearingPoint"
-              >
-                <img
-                  src="/images/partners/bearingpoint.png"
-                  alt="BearingPoint"
-                  className="footer__logo-image"
-                />
-              </a>
-            </div>
-
-            <div className="footer__logos-row footer__logos-row--desktop-bottom">
-              <a
-                className="footer__partner footer__partner--ey"
-                href="https://www.ey.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="EY"
-              >
-                <img
-                  src="/images/partners/ey.png"
-                  alt="EY"
-                  className="footer__logo-image"
-                />
-              </a>
-            </div>
-          </div>
-
-          <div className="footer__logos-mobile">
-            <div className="footer__logos-row footer__logos-row--top">
-              <a
-                className="footer__partner footer__partner--bcg"
-                href="https://www.bcg.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="BCG"
-              >
-                <img
-                  src="/images/partners/bcg.png"
-                  alt="BCG"
-                  className="footer__logo-image"
-                />
-              </a>
-
-              <a
-                className="footer__partner footer__partner--evli"
-                href="https://www.evli.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Evli"
-              >
-                <img
-                  src="/images/partners/evli.png"
-                  alt="EVLI"
-                  className="footer__logo-image"
-                />
-              </a>
-
-              <a
-                className="footer__partner footer__partner--august"
-                href="https://august.fi/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="August"
-              >
-                <img
-                  src="/images/partners/august.png"
-                  alt="August"
-                  className="footer__logo-image"
-                />
-              </a>
-            </div>
-
-            <div className="footer__logos-row footer__logos-row--middle">
-              <a
-                className="footer__partner footer__partner--bearingpoint"
-                href="https://www.bearingpoint.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="BearingPoint"
-              >
-                <img
-                  src="/images/partners/bearingpoint.png"
-                  alt="BearingPoint"
-                  className="footer__logo-image"
-                />
-              </a>
-            </div>
-
-            <div className="footer__logos-row footer__logos-row--bottom">
-              <a
-                className="footer__partner footer__partner--ey"
-                href="https://www.ey.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="EY"
-              >
-                <img
-                  src="/images/partners/ey.png"
-                  alt="EY"
-                  className="footer__logo-image"
-                />
-              </a>
-            </div>
+              return (
+                <div
+                  key={row}
+                  className={`footer__logos-row footer__logos-row--${row}`}
+                >
+                  {rowPartners.map((partner) => (
+                    <a
+                      key={partner.id}
+                      className={`footer__partner footer__partner--${partner.size}`}
+                      href={partner.url || undefined}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={partner.name}
+                    >
+                      <img
+                        src={getImageSrc(partner.logo)}
+                        alt={partner.name}
+                        className="footer__logo-image"
+                        style={{
+                          transform: `translate(${partner.offsetX || 0}px, ${
+                            -(partner.offsetY || 0)
+                          }px) scale(${partner.scale || 1})`,
+                        }}
+                      />
+                    </a>
+                  ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

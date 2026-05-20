@@ -106,6 +106,17 @@ function AdminSidebar() {
         </NavLink>
 
         <NavLink
+          to="/admin/footer-partners"
+          className={({ isActive }) =>
+            isActive
+              ? "admin-sidebar__link admin-sidebar__link--active"
+              : "admin-sidebar__link"
+          }
+        >
+          Footer Partners
+        </NavLink>
+
+        <NavLink
           to="/admin/membership-applications"
           className={({ isActive }) =>
             isActive

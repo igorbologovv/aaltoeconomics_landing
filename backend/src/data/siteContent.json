@@ -5,9 +5,9 @@
       "title": "Who are we?",
       "paragraphOne": "We are Aalto Economics, the student association of economics students at Aalto University School of Business. Our goal is to take care of all the economics-minded students’ interests, well-being and future career paths, without forgetting about all the fun and exciting student activities.",
       "paragraphTwo": "We’re proud of our connections with the Department of Economics and with leading economics-oriented companies. We aim to maintain a pathway for students to interact with the department as well as offer the best contacts, knowledge and experience for everyone interested in economics. We also keep in close touch with our alumni to stay on top of the different career possibilities.",
-      "buttonText": "Meet the team",
-      "buttonHref": "/contact",
-      "image": "/images/home/who-we-are.jpg",
+      "buttonText": "WWWW",
+      "buttonHref": "/career-stories",
+      "image": "/uploads/contact/12a99bbd-fe1d-461f-b249-b0e8a3fd0264.webp",
       "imageAlt": "Aalto Economics board"
     },
     "activitiesSection": {
@@ -15,7 +15,7 @@
       "title": "What do we do?",
       "paragraphOne": "We organize events for everyone interested in economics, including networking opportunities, company visits, panel discussions, and study trips. Most of our events are held in English.",
       "paragraphTwo": "Our students’ well-being is a priority. We work closely with the department and make sure student voices are heard while creating meaningful activities around economics.",
-      "image": "/images/home/what-we-do.jpg",
+      "image": "/uploads/contact/8983ea9a-22ec-4d42-bf43-3d29b3d8fa1f.webp",
       "imageAlt": "Aalto Economics event"
     },
     "aboutMosaicSection": {
@@ -28,11 +28,11 @@
       ],
       "buttonText": "Learn More",
       "buttonHref": "/for-alumni",
-      "imageSmallTop": "/images/home/about-small-1.jpg",
+      "imageSmallTop": "/uploads/contact/f567a8f2-ba4e-42a3-95eb-ff018dbe7ed1.webp",
       "imageSmallTopAlt": "Aalto Economics students",
-      "imageLarge": "/images/home/about-large.jpg",
+      "imageLarge": "/uploads/contact/dc5174fd-2729-4f7e-8913-ee99ed54859e.webp",
       "imageLargeAlt": "Aalto Economics community",
-      "imageSmallBottom": "/images/home/about-small-2.jpg",
+      "imageSmallBottom": "/uploads/contact/fd719441-cbb9-4746-8375-93d712192ded.webp",
       "imageSmallBottomAlt": "Aalto Economics event"
     },
     "ctaSection": {
@@ -103,7 +103,7 @@
         "Join events, reconnect, and discover new opportunities.",
         "Share your experience and support the next generation."
       ],
-      "image": "/uploads/contact/e2f2b8f1-ffd5-4e27-beaf-5c6e801c71ad.jpg",
+      "image": "/uploads/contact/1c306526-c356-4556-af93-348f7acce178.webp",
       "imageAlt": "Aalto Economics alumni community"
     }
   },

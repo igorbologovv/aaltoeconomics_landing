@@ -23,6 +23,7 @@ import AdminHomeContentPage from "./admin/pages/AdminHomeContentPage";
 import AdminJoinUsContentPage from "./admin/pages/AdminJoinUsContentPage";
 import AdminAlumniContentPage from "./admin/pages/AdminAlumniContentPage";
 import AdminForCompaniesContentPage from "./admin/pages/AdminForCompaniesContentPage";
+import AdminFooterPartnersPage from "./admin/pages/AdminFooterPartnersPage";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
         <Route path="career-stories" element={<AdminCareerStoriesPage />} />
         <Route path="contact-people" element={<AdminContactPage />} />
         <Route path="open-positions" element={<AdminOpenPositionsPage />} />
+        <Route path="footer-partners" element={<AdminFooterPartnersPage />} />
         <Route
           path="membership-applications"
           element={<AdminMembershipApplicationsPage />}
